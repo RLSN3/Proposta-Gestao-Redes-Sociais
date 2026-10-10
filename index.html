@@ -58,6 +58,25 @@ h3{font-weight:700;font-size:calc(40*var(--u));margin-bottom:calc(8*var(--u))}.f
 .card li:before{content:"✔";position:absolute;left:0;color:#1db500}.card li.x:before{content:"✖";color:#d62b2b}
 .card .btn{margin:.8em 0 .5em}.card em{font-size:.9em}
 .m-s .card{font-size:20px;line-height:1.18;padding:20px}.m-s .card h4{font-size:40px}.m-s .card .pr{font-size:44px;margin:0}.m-s .card .btn{font-size:22px;min-height:48px;margin:.6em 0 .4em}.m-s .card b{margin:.4em 0 .2em}.m-s .card li{margin-bottom:.25em}.m-s .pl{overflow-y:auto}.m-s .pl .in{height:auto;min-height:100%;padding:30px 36px}
+.m-v .in:has(>.mid),.m-c .in:has(>.mid),.m-v .tbs .in,.m-c .tbs .in{display:flex;flex-direction:column}
+.m-v .mid,.m-c .mid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:0}
+.m-v .mid .ul,.m-c .mid .ul{margin-left:auto;margin-right:auto}
+.m-v .fin a,.m-c .fin a{justify-content:center}
+.m-v .ghost,.m-c .ghost{left:0;right:0;max-width:100%;text-align:center;font-size:calc(130*var(--u));bottom:calc(40*var(--u))}
+.m-v .tbs .in,.m-c .tbs .in{padding-left:calc(36*var(--u));padding-right:calc(36*var(--u))}
+.m-v .tbs .tb,.m-c .tbs .tb{margin:auto 0!important;table-layout:fixed;font-size:max(11.5px,calc(30*var(--u)))}
+.m-v .tb th,.m-c .tb th{font-size:max(11px,calc(27*var(--u)));padding:calc(8*var(--u)) calc(4*var(--u))}
+.m-v .tb td,.m-c .tb td{padding:calc(9*var(--u)) calc(4*var(--u));overflow-wrap:anywhere}
+.m-v .tb th:first-child,.m-c .tb th:first-child{width:30%}
+.m-v .tb tr:last-child td,.m-c .tb tr:last-child td{white-space:nowrap;font-size:max(11.5px,calc(30*var(--u)))}
+.tg{display:none}
+.mob-on .card{display:grid;grid-template-columns:1fr auto;column-gap:8px;align-items:center;padding:calc(24*var(--u)) calc(28*var(--u));height:auto}
+.mob-on .card>*{grid-column:1/-1}.mob-on .card h4{grid-column:1;grid-row:1;font-size:max(15px,calc(46*var(--u)))}
+.mob-on .card .pr{grid-column:2;grid-row:1;font-size:max(15px,calc(46*var(--u)));margin:0;text-align:right}
+.mob-on .card .btn{grid-column:1;grid-row:2;margin:8px 0 0;order:1;font-size:max(12px,calc(32*var(--u)))}
+.mob-on .tg{display:block;grid-column:2;grid-row:2;order:2;margin-top:8px;min-height:max(40px,calc(70*var(--u)));padding:0 12px;border:1px solid currentColor;border-radius:calc(22*var(--u));background:transparent;color:inherit;font-weight:600;font-size:max(12px,calc(30*var(--u)));font-family:inherit;cursor:pointer}
+.mob-on .card .dt{display:none;order:3}.mob-on .card.open .dt{display:block}
+.mob-on .card .pr small{font-size:max(11.5px,.7em)}.mob-on .pl .in{display:flex;flex-direction:column;justify-content:center}.mob-on .plans{gap:calc(22*var(--u))}.mob-on .pl .in{padding:calc(24*var(--u)) calc(30*var(--u))}
 .tb{width:100%;border-collapse:collapse;font-size:calc(36*var(--u))}
 .tb th{font-weight:700;text-align:center;padding:calc(10*var(--u))}.tb td{padding:calc(9*var(--u));text-align:center}.tb th:first-child,.tb td:first-child{text-align:left}
 .tb tr:last-child td{font-weight:700;font-size:1.1em}.ok{color:#1db500}.no{color:#d62b2b}
@@ -116,7 +135,7 @@ h3{font-weight:700;font-size:calc(40*var(--u));margin-bottom:calc(8*var(--u))}.f
 <section class="st d"><div class="in"><span class="logo a"></span><div class="mid"><h2 class="g a">Investimento</h2><span class="ul a"></span></div><div class="ghost" aria-hidden="true">Investimento</div></div></section>
 
 <section class="st l pl"><div class="in"><div class="plans" id="plans"></div></div></section>
-<section class="st l"><div class="in"><span class="logo a"></span><table class="tb a" id="tb" style="margin-top:calc(40*var(--u))"></table></div></section>
+<section class="st l tbs"><div class="in"><span class="logo a"></span><table class="tb a" id="tb" style="margin-top:calc(40*var(--u))"></table></div></section>
 
 <section class="st l"><div class="in pg"><span class="logo w a"></span>
 <div class="a"><h3 class="g">Feito através de:</h3><p class="t ar">Transferência Pix;</p><p class="t ar">Pagamento em Mãos <span class="s">(Clientes locais);</span></p></div>
@@ -180,8 +199,9 @@ const E=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
 document.getElementById("plans").innerHTML=PLANOS.map((x,k)=>{
  const l=(x.t?"<li>"+E(x.t)+"</li>":"")+x.ok.map(v=>"<li>"+E(v)+"</li>").join("");
  const msg="Olá, "+CONFIG.nome+"! Tenho interesse no "+x.n+" (R$ "+x.p+"/mês). Gostaria de receber mais informações.";
- return '<article class="card a'+(x.rec?' rec':'')+'" style="--n:'+k+'">'+(x.rec?'<span class="rb">RECOMENDADO</span>':'')+'<h4>'+E(x.n)+'</h4>'+(x.d?'<p>'+E(x.d)+'</p>':'')+'<div class="pr">R$ '+x.p+' <small>/mês</small></div><b>O que está incluso</b><ul>'+l+'</ul><b>O que não está incluso</b><ul>'+x.no.map(v=>'<li class="x">'+E(v)+'</li>').join("")+'</ul><a class="btn bl" target="_blank" rel="noopener" href="'+wa(msg)+'">'+E(x.b)+' ↗</a><em><b style="display:inline;font-size:1em">Ideal para:</b> '+E(x.i)+'</em></article>'}).join("");
+ return '<article class="card a'+(x.rec?' rec':'')+'" style="--n:'+k+'">'+(x.rec?'<span class="rb">RECOMENDADO</span>':'')+'<h4>'+E(x.n)+'</h4>'+(x.d?'<p class="dt">'+E(x.d)+'</p>':'')+'<div class="pr">R$ '+x.p+' <small>/mês</small></div><b class="dt">O que está incluso</b><ul class="dt">'+l+'</ul><b class="dt">O que não está incluso</b><ul class="dt">'+x.no.map(v=>'<li class="x">'+E(v)+'</li>').join("")+'</ul><a class="btn bl" target="_blank" rel="noopener" href="'+wa(msg)+'">'+E(x.b)+' ↗</a><button type="button" class="tg" aria-expanded="false">Detalhes ▾</button><em class="dt"><b style="display:inline;font-size:1em">Ideal para:</b> '+E(x.i)+'</em></article>'}).join("");
 document.getElementById("tb").innerHTML="<thead><tr><th>Entrega</th><th>Básico</th><th>Premium</th><th>Premium Estratégico</th><th>Premium 360</th></tr></thead><tbody>"+TABELA.map(r=>"<tr>"+r.map((c,j)=>j==0?"<td>"+c+"</td>":"<td>"+(c===1?'<span class="ok" aria-label="Incluso">✔</span>':c===0?'<span class="no" aria-label="Não incluso">✖</span>':c)+"</td>").join("")+"</tr>").join("")+"</tbody>";
+document.getElementById("plans").addEventListener("click",e=>{const b=e.target.closest(".tg");if(!b)return;const c=b.closest(".card"),o=c.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Ocultar ▴":"Detalhes ▾";setTimeout(hintUpd,50)});
 ig1.href=ig2.href=CONFIG.instagram;
 bh.href=CONFIG.portfolio||wa("Olá, "+CONFIG.nome+"! Gostaria de conhecer o seu portfólio.");
 wf.href=wa("Olá, "+CONFIG.nome+"! Vi sua proposta de Social Media e tenho uma dúvida.");
