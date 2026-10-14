@@ -180,7 +180,7 @@ tr.total s.de{display:block;font-size:13px;font-weight:500;color:var(--mut);marg
 @media (max-width:719px){
   .tabs{display:flex}
   th,td{padding:14px 14px}
-  #comp-table [class^="c"],#comp-table [class*=" c"]{display:none}
+  #comp-table th[class^="c"],#comp-table td[class^="c"]{display:none}
   #comp-table[data-col="0"] .c0,#comp-table[data-col="1"] .c1,#comp-table[data-col="2"] .c2,#comp-table[data-col="3"] .c3{display:table-cell}
   td{text-align:right;width:44%}
 }
@@ -480,6 +480,32 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
 .end .close{margin-top:18px}
 @media (max-width:719px){.btn-pulse.btn-xl{width:calc(100% - 28px)}@keyframes cta-ring{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.08,1.6)}}}
 
+/* ---------- leitura enxuta no celular ---------- */
+@media (max-width:1179px){
+  .js .guide{display:none}
+  .step{padding:14px 0;grid-template-columns:44px 1fr;gap:12px}
+  .step h3{font-size:18px}
+  .pil{padding:20px 20px 22px}.pil .num{margin-bottom:14px}
+}
+@media (max-width:719px){
+  .pils{grid-template-columns:1fr 1fr;gap:10px}
+  .pil{padding:16px 14px 18px}.pil h3{font-size:17px;margin-bottom:6px}.pil p{font-size:14.5px}
+  .pils .pil:last-child{grid-column:1/-1}
+  .steps{grid-template-columns:1fr 1fr;column-gap:14px}
+  .step{grid-template-columns:1fr;gap:4px;border-top:1px solid var(--line)}
+  .step h3{font-size:16.5px}.step p{font-size:14.5px}.sn{padding-top:0}
+  .step:nth-last-child(2){border-bottom:0}
+  .steps .step:last-child{grid-column:1/-1}
+  .plan{padding:24px 18px 20px;gap:18px}
+  .plan ul{gap:7px}
+  .qa summary{min-height:56px;padding:12px 0;font-size:16.5px}
+  .qa p{padding-bottom:16px;font-size:15.5px}
+  .sec-head{margin-bottom:28px}
+  .next{margin-top:44px}
+  .custom{padding:24px 18px}
+  .faq{margin-top:48px}
+}
+
 /* ---------- hover / toque ---------- */
 @media (hover:hover){
   .plan:hover,.pil:hover{transform:translateX(6px);box-shadow:0 18px 44px rgba(0,0,0,.14);border-color:var(--line2)}
@@ -549,6 +575,170 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
   .logo{color:#40e0d0!important}
   .fcta{transition:none}
 }
+
+/* =========================================================
+   SISTEMA VISUAL ÚNICO (prevalece sobre as regras acima)
+   Texto: 13 rótulo · 15 apoio · 16.5 corpo · 19 título de bloco · 24 destaque
+   Cantos: 16 bloco · 12 item interno · 999 pílula
+   Espaço interno: 20 celular · 26 computador
+   ========================================================= */
+:root{--r-card:16px;--r-in:12px;--pad:20px;--t-lab:13px;--t-sm:15px;--t-body:16.5px;--t-h:19px;--t-xl:24px}
+@media (min-width:720px){:root{--pad:26px}}
+
+/* cantos */
+.pil,.plan,.box,.custom,.tbl,.perm-ex,.pick,.why li,.fm-in .fm-g{border-radius:var(--r-card)}
+.po,.pay li,.kf li,.ex-row,.ptab,.fm input[type=text],.fm textarea{border-radius:var(--r-in)}
+.ptabs{border-radius:calc(var(--r-in) + 5px)}
+
+/* espaço interno dos blocos */
+.pil,.box,.custom,.perm-ex{padding:var(--pad)}
+.plan{padding:calc(var(--pad) + 4px) var(--pad) var(--pad)}
+.po,.pay li{padding:14px 16px}
+.kf li{padding:11px 12px!important}
+
+/* títulos de bloco: um único tamanho */
+.pil h3,.box h3,.step h3,.box.perm h3{font-size:var(--t-h);line-height:1.2;letter-spacing:-.02em;font-weight:700}
+.plan h3{font-size:var(--t-xl)}
+.custom h3{font-size:clamp(26px,3.2vw,38px)}
+
+/* rótulos: mínimo 13px, mesmo estilo em toda a página */
+.kick,.ptabs-l,.next span,.plan .base,.custom .base,.qg-t,.close-l,.ex-k,.kf span,.badge,.tag,.tag-l,.pil .num,.box .bn,.sn,.why-n,.fm-k{font-size:var(--t-lab)!important;letter-spacing:.1em;font-weight:700}
+.kf span{letter-spacing:.06em}
+.ptab span{font-size:var(--t-lab)!important}
+
+/* texto de apoio e corpo */
+.pil p,.box p,.step p,.po p,.pay span,.plan .pdesc,.plan .save,.ex-row small,.tbl-note,.close-n,.cu-l>p,.fm-s,.fm-h{font-size:var(--t-sm)!important;line-height:1.5}
+.plan ul,.qa p,.lead{font-size:var(--t-body)!important}
+.lead{line-height:1.55}
+.kf b,.pay b,.po b{font-size:var(--t-sm)!important}
+.qa summary{font-size:var(--t-body)!important}
+.qa-key summary span{font-size:var(--t-h)!important}
+
+/* respiro vertical consistente */
+.sec-head{gap:6px;margin-bottom:clamp(28px,5vw,56px)}
+.sec-head .lead{margin-top:10px}
+
+/* ---------- celular: tudo centralizado e alinhado ---------- */
+@media (max-width:719px){
+  .sec-head{text-align:center;justify-items:center}
+  .sec-head .kick{justify-content:center}
+  .sec-head .lead{margin-left:auto;margin-right:auto}
+  .faq>.kick{display:flex;justify-content:center}
+  .faq>h2{text-align:center}
+  .ptabs-l{text-align:center}
+  .tbl-note{text-align:center}
+  .next{text-align:left}
+  .plans-foot{justify-content:center;text-align:center}
+  .plans-foot p{margin:0 auto}
+  .cu-l{text-align:center}
+  .cu-l>p{margin-left:auto!important;margin-right:auto!important}
+  .cu-price{justify-content:center}
+  .custom .btn{width:100%}
+  .custom .base{text-align:center}
+  .cu-items{justify-content:center}
+  .box{text-align:left}
+  .box h3,.box .bn,.box .tag,.box .tag-l{text-align:left}
+  .pil{text-align:left}
+}
+
+/* ---------- resposta ao toque e ao clique ---------- */
+.btn,.ptab,.pn-b,.tab,.cu-it,.pick,.next,.qa summary{transition:transform .18s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn:active,.ptab:active,.pn-b:active,.tab:active,.cu-it:active,.pick:active{transform:scale(.97)}
+.next:active i{transform:translateY(4px)}
+.qa[open]{background:linear-gradient(90deg,rgba(107,155,255,.08),transparent 70%)}
+.qa[open] summary{color:var(--acc)}
+.qa summary{padding-left:4px;padding-right:4px}
+.qa p{padding-left:4px;padding-right:4px}
+.ptab[aria-selected=true]{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.cu-it.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+:focus-visible{outline:2px solid var(--blue-ink);outline-offset:3px}
+
+/* ajuste fino da escala */
+.aud li,.tab,.plan .from,.pn-c,.ex-row>b,table,th,td,.plans-foot p,.ptab b{font-size:var(--t-sm)!important}
+.ptab b{font-size:var(--t-sm)!important;font-weight:700}
+.btn{font-size:16px}
+.btn-lg,.btn-xl{font-size:17px!important}
+.cu-price .pill,.ex-row>b .pill{font-size:20px!important}
+.next b{font-size:var(--t-xl)!important}
+.ex-k{color:#c4c4c4!important}
+
+/* ---------- O que fazemos: lista em uma coluna no celular ---------- */
+@media (max-width:719px){
+  .pils{grid-template-columns:1fr!important;gap:10px}
+  .pils .pil{grid-column:auto!important;display:grid;grid-template-columns:40px 1fr;align-items:start;gap:2px 12px;padding:16px 18px!important}
+  .pil .num{grid-row:1/span 2;margin:3px 0 0!important}
+  .pil h3{margin:0 0 2px!important}
+}
+
+/* ---------- comparação ---------- */
+#comp-table{table-layout:fixed}
+#comp-table thead th{vertical-align:bottom;padding-top:18px;padding-bottom:18px;text-transform:none;letter-spacing:0}
+#comp-table thead .th-lbl{font-size:var(--t-lab)!important;letter-spacing:.1em;text-transform:uppercase;width:34%}
+.th-n{display:block;font-size:var(--t-lab);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.th-de{display:block;font-size:var(--t-lab);color:var(--mut);font-weight:500}
+.th-p{display:block;font-size:20px;font-weight:800;color:var(--fg);letter-spacing:-.02em;white-space:nowrap}
+.th-p small{font-size:13px;font-weight:600;color:var(--mut);margin-left:2px}
+thead .hl .th-n{color:var(--acc)}
+tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);border-bottom:1px solid var(--line)}
+#comp-table tbody th{font-weight:500;color:var(--fg)}
+#comp-table td{font-weight:600}
+.ck{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(107,155,255,.16);color:var(--acc);font-size:14px;font-weight:800}
+.nx{color:var(--mut);opacity:.6}
+.ck-t{display:none}
+@media (min-width:720px){#comp-table td{text-align:center}#comp-table thead th:not(.th-lbl){text-align:center}}
+@media (max-width:719px){
+  .tabs{border-radius:18px!important;padding:5px}
+  .tab{display:flex;flex-direction:column;gap:1px;min-height:54px;border-radius:13px!important;padding:6px 2px}
+  .tab b{font-size:14.5px}.tab span{font-size:12.5px!important;opacity:.8;white-space:nowrap}
+  #comp-table thead{display:none}
+  #comp-table{table-layout:auto}
+  #comp-table tbody th{width:56%}
+  #comp-table td{width:46%;text-align:right}
+  .ck-t{display:inline;font-size:var(--t-sm);margin-left:8px;vertical-align:middle}
+  td.dash .ck-t{color:var(--mut);font-weight:500;margin-left:0}
+  td.dash .nx{display:none}
+  .ck{width:22px;height:22px;font-size:12px}
+  tr.grp th{padding:18px 14px 8px}
+}
+@media (max-width:380px){.tab b{font-size:13px}.tab span{font-size:11.5px!important}}
+
+/* ---------- O que fazemos e processo: compactos ---------- */
+.pils{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))!important;gap:10px!important}
+.pils .pil{grid-column:auto!important;display:flex!important;align-items:center;gap:12px;padding:16px 18px!important}
+.pil .num{margin:0!important}
+.pil h3{margin:0!important;font-size:17px!important}
+@media (max-width:719px){.pils{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pils .pil{padding:14px 14px!important;gap:10px}.pils .pil:last-child{grid-column:1/-1!important}.pil h3{font-size:15.5px!important}}
+.step{align-items:center;padding:14px 0}
+.step h3{margin:0!important}
+
+/* ---------- Perguntas: "+" em destaque verde ---------- */
+.qa i{width:32px;height:32px;border:0!important;background:#40e0d0;color:#0d2420;box-shadow:0 0 0 4px rgba(64,224,208,.18)}
+.qa i::before,.qa i::after{width:12px;height:2px}
+.qa[open] i{background:#fff;color:#1a1a1a;box-shadow:none}
+@media (hover:hover){.qa summary:hover i{box-shadow:0 0 0 6px rgba(64,224,208,.28)}}
+.qa:not([open]) i{animation:qa-hint 2.4s ease-in-out infinite}
+@keyframes qa-hint{50%{box-shadow:0 0 0 7px rgba(64,224,208,.08)}}
+.qa-key p{color:var(--mut)!important;opacity:1}
+.qa-key summary span{font-size:var(--t-body)!important}
+@media (max-width:719px){.faq>div .qg-t{text-align:center}}
+@media (max-width:400px){.pils .pil{padding:13px 12px!important;gap:8px}.pil h3{font-size:14.5px!important;letter-spacing:-.01em}}
+
+/* ---------- plano personalizado compacto ---------- */
+.custom.cu-compact{display:grid!important;grid-template-columns:1fr;gap:20px;margin-top:20px;padding:clamp(22px,3.4vw,34px)!important;text-align:center;justify-items:center}
+.cu-compact .cu-head{display:grid;justify-items:center;gap:10px;max-width:560px}
+.cu-compact h3{margin:4px 0 0!important;font-size:clamp(22px,2.6vw,28px)!important;line-height:1.15}
+.cu-sub{margin:0;color:var(--mut);font-size:var(--t-sm)}
+.cu-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.cu-actions .btn{min-height:50px}
+.cu-more{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border:1px solid var(--line2);border-radius:999px;background:transparent;font-weight:600;font-size:15.5px;cursor:pointer;color:var(--fg)}
+.cu-more i{position:relative;width:10px;height:10px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .3s var(--ease)}
+.cu-more[aria-expanded=true] i{transform:translateY(2px) rotate(-135deg)}
+@media (hover:hover){.cu-more:hover{background:var(--fg);color:var(--bg)}}
+.cu-det{width:100%;max-width:760px;padding-top:20px;border-top:1px solid var(--line);animation:pin .4s var(--ease)}
+.cu-det .base{margin:0 0 12px!important;text-align:center}
+.cu-det .cu-items{justify-content:center}
+.cu-hint{margin:12px 0 0;font-size:13.5px;color:var(--mut)}
+@media (max-width:719px){.cu-actions{width:100%;flex-direction:column}.cu-actions .btn,.cu-more{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -649,7 +839,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
     <div>
       <p class="kick rv">Proposta comercial · Gestão de redes sociais</p>
       <h1 class="tt">Sua marca merece uma estratégia <em>à altura dos seus objetivos.</em></h1>
-      <p class="lead rv">A RLSN une planejamento, design e estratégia para transformar sua presença digital em uma comunicação mais profissional, consistente e alinhada aos objetivos do seu negócio.</p>
+      <p class="lead rv">Planejamento, design e estratégia para um Instagram profissional e consistente.</p>
       <ul class="aud rv" aria-label="Para quem é">
         <li>Clínicas</li><li>Profissionais da saúde</li><li>Empresários</li><li>Negócios locais</li>
       </ul>
@@ -664,10 +854,9 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
   <div class="wrap">
     <div class="sec-head">
       <p class="kick rv">O que fazemos</p>
-      <h2 class="tt" id="h-serv">Publicar não basta. <em>Sua marca precisa ser percebida do jeito certo.</em></h2>
-      <p class="lead rv">Mais do que publicar conteúdos, trabalhamos para fortalecer o posicionamento da sua marca e construir uma comunicação que gere valor para o público. Para isso, atuamos em cinco frentes:</p>
+      <h2 class="tt" id="h-serv">Publicar não basta. <em>Fazemos sua marca ser percebida.</em></h2>
     </div>
-    <ul class="pils"><li class="pil rv tap"><span class="num">01</span><h3>Posicionamento</h3><p>Definimos como sua marca deve ser percebida e quais mensagens precisam ser fortalecidas.</p></li><li class="pil rv tap"><span class="num">02</span><h3>Planejamento estratégico</h3><p>Organizamos os conteúdos de acordo com os objetivos do negócio e as necessidades do público.</p></li><li class="pil rv tap"><span class="num">03</span><h3>Conteúdo com intenção</h3><p>Criamos publicações para informar, conectar, despertar interesse e apresentar os diferenciais da marca.</p></li><li class="pil rv tap"><span class="num">04</span><h3>Identidade e consistência</h3><p>Mantemos a comunicação visual alinhada à identidade e ao posicionamento da empresa.</p></li><li class="pil rv tap"><span class="num">05</span><h3>Gestão e acompanhamento</h3><p>Organizamos as publicações e acompanhamos os resultados conforme os recursos incluídos no plano contratado.</p></li></ul>
+    <ul class="pils"><li class="pil rv"><span class="num">01</span><h3>Posicionamento</h3></li><li class="pil rv"><span class="num">02</span><h3>Planejamento</h3></li><li class="pil rv"><span class="num">03</span><h3>Conteúdo com intenção</h3></li><li class="pil rv"><span class="num">04</span><h3>Identidade</h3></li><li class="pil rv"><span class="num">05</span><h3>Acompanhamento</h3></li></ul>
     <a class="next rv" href="#processo" data-cur="CONTINUAR •"><span>Antes do investimento</span><b>Veja como o trabalho acontece</b><i aria-hidden="true"></i></a>
   </div>
   <div class="shade"></div>
@@ -679,14 +868,14 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
   <div class="wrap">
     <div class="sec-head">
       <p class="kick rv">Como funciona</p>
-      <h2 class="tt" id="h-proc">Um processo claro, <em>do primeiro contato aos relatórios.</em></h2>
-      <p class="lead rv">Você sabe o que acontece em cada etapa. <strong>Nenhum conteúdo é agendado sem passar pela sua aprovação.</strong></p>
+      <h2 class="tt" id="h-proc">Como funciona, <em>passo a passo.</em></h2>
+      <p class="lead rv"><strong>Nada é publicado sem a sua aprovação.</strong></p>
     </div>
-    <ol class="steps"><li class="step rv"><span class="sn">01</span><div><h3>Proposta</h3><p>Envio e apresentação da proposta.</p></div></li><li class="step rv"><span class="sn">02</span><div><h3>Contratação</h3><p>Confirmação da contratação e pagamento inicial.</p></div></li><li class="step rv"><span class="sn">03</span><div><h3>Briefing</h3><p>Preenchimento do briefing com as informações da marca.</p></div></li><li class="step rv"><span class="sn">04</span><div><h3>Planejamento</h3><p>Planejamento dos conteúdos.</p></div></li><li class="step rv"><span class="sn">05</span><div><h3>Criação e aprovação</h3><p>Criação dos materiais e envio para sua aprovação.</p></div></li><li class="step rv"><span class="sn">06</span><div><h3>Agendamento</h3><p>Agendamento das publicações.</p></div></li><li class="step rv"><span class="sn">07</span><div><h3>Acompanhamento</h3><p>Monitoramento e relatórios, conforme o plano contratado.</p></div></li></ol>
+    <ol class="steps"><li class="step rv"><span class="sn">01</span><div><h3>Proposta</h3></div></li><li class="step rv"><span class="sn">02</span><div><h3>Contratação</h3></div></li><li class="step rv"><span class="sn">03</span><div><h3>Briefing</h3></div></li><li class="step rv"><span class="sn">04</span><div><h3>Planejamento</h3></div></li><li class="step rv"><span class="sn">05</span><div><h3>Criação e aprovação</h3></div></li><li class="step rv"><span class="sn">06</span><div><h3>Agendamento</h3></div></li><li class="step rv"><span class="sn">07</span><div><h3>Acompanhamento</h3></div></li></ol>
     <div class="faq" id="duvidas">
       <p class="kick rv">Perguntas frequentes</p>
-      <h2 class="tt">Antes de decidir, <em>o que costumam perguntar.</em></h2>
-      <div style="margin-top:30px"><div class="qg"><h3 class="qg-t rv">Como trabalhamos</h3><details class="qa rv tap qa-key" open data-cur="ABRIR •"><summary><span>Como funciona o trabalho de gestão de redes sociais da RLSN?</span><i aria-hidden="true"></i></summary><p>Não é só postar. Antes de qualquer publicação, a RLSN entende o seu negócio, o seu público e os seus objetivos, e define como a sua marca deve ser percebida. A partir disso, montamos o planejamento do mês: quais temas, formatos e mensagens vão ao ar e qual é a intenção de cada publicação, seja informar, gerar conexão, despertar interesse ou apresentar os seus diferenciais. Depois criamos as artes e legendas, você aprova e as publicações são agendadas. Nos planos com relatório, acompanhamos os resultados e usamos os dados para ajustar o planejamento seguinte.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Qual a diferença entre postar por conta própria e ter uma gestão estratégica?</span><i aria-hidden="true"></i></summary><p>Postar sem planejamento costuma gerar um perfil irregular, com conteúdos soltos que não constroem uma imagem clara da marca. Na gestão estratégica, cada publicação tem um papel dentro do planejamento, a comunicação visual segue a identidade da marca e a frequência é mantida. Você ganha tempo para cuidar do negócio enquanto a sua presença digital é trabalhada com método.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os conteúdos passam por aprovação?</span><i aria-hidden="true"></i></summary><p>Sim. Os materiais são enviados para aprovação conforme o fluxo acordado antes do agendamento.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso enviar fotos e vídeos?</span><i aria-hidden="true"></i></summary><p>Nos planos Básico e Premium não há captação presencial: as artes são criadas pela RLSN a partir das informações e dos materiais que você envia. No Premium Estratégico e no Premium 360°, as sessões presenciais de captação de fotos e vídeos já estão inclusas.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso passar a senha do meu Instagram?</span><i aria-hidden="true"></i></summary><p>Não é necessário. O acesso para agendar as publicações pode ser liberado pelo gerenciador da Meta (Meta Business Suite), e o controle da conta continua com você.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Vocês respondem comentários e mensagens?</span><i aria-hidden="true"></i></summary><p>O atendimento de comentários e mensagens diretas não está previsto nos planos. Se você precisar, ele pode ser avaliado e orçado como serviço adicional.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso solicitar alterações?</span><i aria-hidden="true"></i></summary><p>Sim. As revisões devem respeitar o escopo e os limites definidos na contratação. Mudanças adicionais poderão ser orçadas separadamente.</p></details></div><div class="qg"><h3 class="qg-t rv">Resultados e acompanhamento</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Em quanto tempo vejo resultados?</span><i aria-hidden="true"></i></summary><p>Presença digital se constrói com consistência. Os primeiros meses servem para organizar a comunicação, testar formatos e entender o que funciona com o seu público. Nos planos com relatório, o desempenho é acompanhado mês a mês e o planejamento é ajustado a partir dos dados.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Como acompanho os resultados?</span><i aria-hidden="true"></i></summary><p>A partir do Premium, você recebe um relatório mensal de desempenho com o monitoramento dos resultados. No Premium Estratégico, entra a análise de indicadores com recomendações de melhoria. No Premium 360°, a análise é ampliada e vem com um plano de otimização. O Básico não inclui relatório.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os resultados são garantidos?</span><i aria-hidden="true"></i></summary><p>Não é possível garantir números específicos de seguidores, alcance, leads ou vendas. O trabalho é desenvolvido para fortalecer a comunicação, melhorar a consistência e orientar decisões com base nos objetivos e nos dados disponíveis.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>O investimento em anúncios está incluído?</span><i aria-hidden="true"></i></summary><p>Não. A verba de anúncios é paga separadamente. A gestão de tráfego está incluída nos planos Premium Estratégico e Premium 360°.</p></details></div><div class="qg"><h3 class="qg-t rv">Planos e pagamento</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Qual plano devo escolher?</span><i aria-hidden="true"></i></summary><p>Depende do momento do seu negócio. O Básico organiza o Instagram. O Premium traz mais frequência, calendário editorial e relatório. O Premium Estratégico soma captação presencial, campanhas e gestão de tráfego. O Premium 360° amplia a produção e o acompanhamento. Na seção de planos, um guia rápido ajuda você a encontrar o seu.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>E se nenhum plano se encaixar no meu negócio?</span><i aria-hidden="true"></i></summary><p>Montamos um plano personalizado. Você conta o momento e os objetivos do seu negócio, e a RLSN define com você o escopo: quantidade de publicações, captação, reuniões, relatórios e tráfego pago. Depois, você recebe a proposta com o valor.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Atendem clientes de outras cidades?</span><i aria-hidden="true"></i></summary><p>Sim. Planejamento, criação, aprovação dos conteúdos e pagamento podem ser feitos a distância. Nos planos com captação presencial, a logística da captação é combinada na conversa.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pagar no cartão de crédito?</span><i aria-hidden="true"></i></summary><p>Não trabalhamos com cartão de crédito. Para clientes de outras cidades, o pagamento é 100% online, via Pix, direto pelo aplicativo do seu banco, sem precisar estar na cidade. Clientes locais também podem pagar em mãos, quando previamente combinado.</p></details></div></div>
+      <h2 class="tt">Dúvidas <em>frequentes.</em></h2>
+      <div style="margin-top:30px"><div class="qg"><h3 class="qg-t rv">Como trabalhamos</h3><details class="qa rv tap qa-key" data-cur="ABRIR •"><summary><span>Como funciona o trabalho?</span><i aria-hidden="true"></i></summary><p>Planejamos o mês, criamos, você aprova e agendamos. Nada é postado sem estratégia.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Por que não postar por conta própria?</span><i aria-hidden="true"></i></summary><p>Sem planejamento o perfil fica irregular. Aqui cada post tem um objetivo, e você ganha tempo.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso enviar fotos e vídeos?</span><i aria-hidden="true"></i></summary><p>No Básico e no Premium, sim. No Estratégico e no 360°, a captação está inclusa.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso passar minha senha?</span><i aria-hidden="true"></i></summary><p>Não. O acesso é liberado pela Meta e a conta continua sua.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Vocês respondem comentários e mensagens?</span><i aria-hidden="true"></i></summary><p>Não está incluso. Pode ser orçado à parte.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pedir alterações?</span><i aria-hidden="true"></i></summary><p>Sim, dentro do escopo combinado.</p></details></div><div class="qg"><h3 class="qg-t rv">Resultados</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Em quanto tempo vejo resultados?</span><i aria-hidden="true"></i></summary><p>Presença digital se constrói com constância, mês a mês.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os resultados são garantidos?</span><i aria-hidden="true"></i></summary><p>Números não podem ser garantidos. O método e a constância, sim.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os anúncios estão inclusos?</span><i aria-hidden="true"></i></summary><p>A verba é paga à parte. A gestão de tráfego está inclusa no Estratégico e no 360°.</p></details></div><div class="qg"><h3 class="qg-t rv">Pagamento</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>E se nenhum plano servir?</span><i aria-hidden="true"></i></summary><p>Montamos um plano personalizado com você.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Atendem outras cidades?</span><i aria-hidden="true"></i></summary><p>Sim. Tudo a distância, com pagamento via Pix.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pagar no cartão?</span><i aria-hidden="true"></i></summary><p>Não. Só Pix, 100% online. Clientes locais podem pagar em mãos.</p></details></div></div>
     </div>
     <a class="next rv" href="#planos" data-cur="CONTINUAR •"><span>Dúvidas respondidas? Agora, o investimento</span><b>Escolha o plano ideal para o seu momento</b><i aria-hidden="true"></i></a>
   </div>
@@ -700,7 +889,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
     <div class="sec-head">
       <p class="kick rv">Planos e investimentos</p>
       <h2 class="tt" id="h-plan">Qual plano combina <em>com o momento do seu negócio?</em></h2>
-      <p class="lead rv">Escolha a frase que mais parece com você e veja o plano indicado. Se nenhuma servir, montamos um plano sob medida. Os valores destacados valem com <strong>permanência mínima de 3 meses</strong>.</p>
+      <p class="lead rv">Valores com <strong>permanência mínima de 3 meses</strong>. Não achou o seu? Tem o plano personalizado.</p>
     </div>
     <div class="guide" role="group" aria-label="Encontre seu plano"><button type="button" class="pick rv tap" data-target="plano-basico" data-cur="VER PLANO •"><span class="pk-q">Quero organizar e profissionalizar meu Instagram</span><span class="pk-a"><b>Básico</b><span>R$ 650/mês</span></span></button><button type="button" class="pick rv tap" data-target="plano-premium" data-cur="VER PLANO •"><span class="pk-q">Quero publicar com mais frequência e acompanhar os resultados</span><span class="pk-a"><b>Premium</b><span>R$ 1.050/mês</span></span></button><button type="button" class="pick rv tap rec" data-target="plano-estrategico" data-cur="VER PLANO •"><span class="pk-q">Quero fortalecer autoridade com captação, campanhas e tráfego pago</span><span class="pk-a"><b>Premium Estratégico</b><span>R$ 1.950/mês</span></span></button><button type="button" class="pick rv tap" data-target="plano-360" data-cur="VER PLANO •"><span class="pk-q">Preciso de mais produção e acompanhamento estratégico próximo</span><span class="pk-a"><b>Premium 360°</b><span>R$ 2.950/mês</span></span></button><button type="button" class="pick pick-x rv tap" data-target="plano-personalizado" data-cur="MONTAR •"><span class="pk-q">Nenhuma dessas frases parece com o meu negócio</span><span class="pk-a"><b>Personalizado</b><span>Sob consulta</span></span></button></div>
     <div class="ptabs-wrap">
@@ -708,24 +897,24 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
       <div class="ptabs" role="tablist" aria-label="Planos"><button type="button" class="ptab tap" role="tab" data-plan="plano-basico" aria-controls="plano-basico" aria-selected="false"><b>Básico</b><span>R$ 650/mês</span></button><button type="button" class="ptab tap" role="tab" data-plan="plano-premium" aria-controls="plano-premium" aria-selected="false"><b>Premium</b><span>R$ 1.050/mês</span></button><button type="button" class="ptab tap rec" role="tab" data-plan="plano-estrategico" aria-controls="plano-estrategico" aria-selected="false"><b>Estratégico</b><span>R$ 1.950/mês</span></button><button type="button" class="ptab tap" role="tab" data-plan="plano-360" aria-controls="plano-360" aria-selected="false"><b>360°</b><span>R$ 2.950/mês</span></button></div>
     </div>
     <div class="plans"><article class="plan rv tap" id="plano-basico" aria-labelledby="pn-basico">
-  <header><h3 id="pn-basico">Básico</h3><p class="pdesc">Para começar a profissionalizar seu Instagram.</p>
-  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 690/mês</s> por</p><p class="now"><span class="pill">R$ 650</span><span class="per">/mês</span></p><p class="save">Economia de R$ 40/mês com permanência mínima de 3 meses</p><p class="pay-l">Vence no 1º dia útil do mês · Pix. Em mãos só para clientes locais</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>7 por mês</b></li><li class="off"><span>Reuniões</span><b>Não inclui</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Não inclui</b></li></ul></header>
-  <div class="inc"><p class="base">Inclui:</p><ul class="yes"><li>7 publicações por mês</li><li>Planejamento básico de conteúdo</li><li>Criação de artes e legendas</li><li>Agendamento das publicações</li><li>Organização básica da comunicação do perfil</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Reunião estratégica</li><li>Relatório mensal</li><li>Gestão de tráfego pago</li></ul></div>
+  <header><h3 id="pn-basico">Básico</h3><p class="pdesc">Para profissionalizar seu Instagram.</p>
+  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 690/mês</s> por</p><p class="now"><span class="pill">R$ 650</span><span class="per">/mês</span></p><p class="save">Economize R$ 40/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>7 por mês</b></li><li class="off"><span>Reuniões</span><b>Não inclui</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Não inclui</b></li></ul></header>
+  <div class="inc"><p class="base">Inclui:</p><ul class="yes"><li>7 publicações por mês</li><li>Planejamento básico</li><li>Artes e legendas</li><li>Agendamento</li><li>Organização do perfil</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Reunião estratégica</li><li>Relatório mensal</li><li>Tráfego pago</li></ul></div>
   <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20B%C3%A1sico%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%20650%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="basico" data-cur="CONTRATAR NO WHATSAPP •">Quero organizar meu Instagram</a>
 </article><article class="plan rv tap" id="plano-premium" aria-labelledby="pn-premium">
-  <header><h3 id="pn-premium">Premium</h3><p class="pdesc">Para manter uma presença mais frequente e organizada.</p>
-  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 1.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.050</span><span class="per">/mês</span></p><p class="save">Economia de R$ 100/mês com permanência mínima de 3 meses</p><p class="pay-l">Vence no 1º dia útil do mês · Pix. Em mãos só para clientes locais</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>12 por mês</b></li><li class="on"><span>Reuniões</span><b>Inclusa</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Não inclui</b></li></ul></header>
-  <div class="inc"><p class="base">Tudo do Básico, mais:</p><ul class="yes"><li>5 publicações adicionais, totalizando 12 por mês</li><li>Calendário editorial</li><li>Relatório mensal de desempenho</li><li>Monitoramento dos resultados</li><li>Reunião estratégica</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial de fotos e vídeos</li><li>Planejamento aprofundado de campanhas</li><li>Gestão de tráfego pago</li><li>Verba de anúncios</li></ul></div>
+  <header><h3 id="pn-premium">Premium</h3><p class="pdesc">Para postar com mais frequência.</p>
+  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 1.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.050</span><span class="per">/mês</span></p><p class="save">Economize R$ 100/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>12 por mês</b></li><li class="on"><span>Reuniões</span><b>Inclusa</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Não inclui</b></li></ul></header>
+  <div class="inc"><p class="base">Tudo do Básico +</p><ul class="yes"><li>12 publicações por mês</li><li>Calendário editorial</li><li>Relatório mensal</li><li>Monitoramento de resultados</li><li>Reunião estratégica</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Planejamento de campanhas</li><li>Tráfego pago</li></ul></div>
   <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Premium%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.050%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" data-wa="premium" data-cur="CONTRATAR NO WHATSAPP •">Quero mais consistência</a>
 </article><article class="plan rv tap rec" id="plano-estrategico" aria-labelledby="pn-estrategico">
-  <header><span class="badge">Recomendado</span><h3 id="pn-estrategico">Premium Estratégico</h3><p class="pdesc">Para fortalecer sua marca, autoridade e posicionamento.</p>
-  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 2.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.950</span><span class="per">/mês</span></p><p class="save">Economia de R$ 200/mês com permanência mínima de 3 meses</p><p class="pay-l">Vence no 1º dia útil do mês · Pix. Em mãos só para clientes locais</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>14 por mês</b></li><li class="on"><span>Reuniões</span><b>1 por mês</b></li><li class="on"><span>Captação</span><b>1 sessão/mês</b></li><li class="on"><span>Tráfego pago</span><b>Gestão inclusa</b></li></ul></header>
-  <div class="inc"><p class="base">Tudo do Premium, mais:</p><ul class="yes"><li>2 publicações adicionais, totalizando 14 por mês</li><li>1 sessão presencial mensal de captação de fotos e vídeos</li><li>1 reunião estratégica mensal</li><li>Planejamento de campanhas</li><li>Análise de indicadores e recomendações de melhoria</li><li>Direcionamento para fortalecer posicionamento e autoridade</li><li>Gestão de tráfego pago</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação de vídeos com drone</li><li>Fotógrafo profissional externo</li><li>Serviços adicionais fora do escopo</li></ul></div>
+  <header><span class="badge">Recomendado</span><h3 id="pn-estrategico">Premium Estratégico</h3><p class="pdesc">Para ganhar autoridade e posicionamento.</p>
+  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 2.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.950</span><span class="per">/mês</span></p><p class="save">Economize R$ 200/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>14 por mês</b></li><li class="on"><span>Reuniões</span><b>1 por mês</b></li><li class="on"><span>Captação</span><b>1 sessão/mês</b></li><li class="on"><span>Tráfego pago</span><b>Gestão inclusa</b></li></ul></header>
+  <div class="inc"><p class="base">Tudo do Premium +</p><ul class="yes"><li>14 publicações por mês</li><li>1 captação presencial por mês</li><li>1 reunião estratégica por mês</li><li>Planejamento de campanhas</li><li>Análise de indicadores</li><li>Direcionamento de posicionamento</li><li>Gestão de tráfego pago</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Drone</li><li>Fotógrafo externo</li><li>Serviços fora do escopo</li></ul></div>
   <a class="btn btn-accent mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Premium%20Estrat%C3%A9gico%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.950%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20entender%20os%20pr%C3%B3ximos%20passos%20para%20contratar." target="_blank" rel="noopener noreferrer" data-wa="estrategico" data-cur="CONTRATAR NO WHATSAPP •">Quero fortalecer minha marca</a>
 </article><article class="plan rv tap" id="plano-360" aria-labelledby="pn-360">
-  <header><h3 id="pn-360">Premium 360°</h3><p class="pdesc">Para negócios que precisam de mais produção e acompanhamento estratégico.</p>
-  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 3.250/mês</s> por</p><p class="now"><span class="pill">R$ 2.950</span><span class="per">/mês</span></p><p class="save">Economia de R$ 300/mês com permanência mínima de 3 meses</p><p class="pay-l">Vence no 1º dia útil do mês · Pix. Em mãos só para clientes locais</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>20 por mês</b></li><li class="on"><span>Reuniões</span><b>2 por mês</b></li><li class="on"><span>Captação</span><b>2 sessões/mês</b></li><li class="on"><span>Tráfego pago</span><b>Gestão inclusa</b></li></ul></header>
-  <div class="inc"><p class="base">Tudo do Premium Estratégico, mais:</p><ul class="yes"><li>6 publicações adicionais, totalizando 20 por mês</li><li>2 sessões presenciais mensais de captação</li><li>2 reuniões estratégicas mensais</li><li>Planejamento editorial ampliado</li><li>Planejamento integrado de conteúdo e campanhas</li><li>Análise ampliada de desempenho e plano de otimização</li><li>Planejamento de pautas para serviços e oportunidades comerciais</li><li>Captação de vídeos com drone</li><li>Serviços adicionais conforme escopo previamente definido</li></ul></div>
+  <header><h3 id="pn-360">Premium 360°</h3><p class="pdesc">Para mais produção e acompanhamento.</p>
+  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 3.250/mês</s> por</p><p class="now"><span class="pill">R$ 2.950</span><span class="per">/mês</span></p><p class="save">Economize R$ 300/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>20 por mês</b></li><li class="on"><span>Reuniões</span><b>2 por mês</b></li><li class="on"><span>Captação</span><b>2 sessões/mês</b></li><li class="on"><span>Tráfego pago</span><b>Gestão inclusa</b></li></ul></header>
+  <div class="inc"><p class="base">Tudo do Estratégico +</p><ul class="yes"><li>20 publicações por mês</li><li>2 captações presenciais por mês</li><li>2 reuniões estratégicas por mês</li><li>Planejamento editorial ampliado</li><li>Conteúdo e campanhas integrados</li><li>Análise ampliada e plano de otimização</li><li>Pautas para serviços e vendas</li><li>Captação com drone</li><li>Serviços extras conforme escopo</li></ul></div>
   <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Premium%20360%C2%B0%20da%20RLSN%2C%20no%20valor%20de%20R%24%202.950%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20conhecer%20as%20condi%C3%A7%C3%B5es%20de%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="360" data-cur="CONTRATAR NO WHATSAPP •">Quero uma gestão completa</a>
 </article></div>
     <div class="pnav" aria-label="Navegar entre planos">
@@ -733,10 +922,9 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
       <span class="pn-c" aria-live="polite"></span>
       <button type="button" class="pn-b tap" data-dir="1"><span></span><i aria-hidden="true">›</i></button>
     </div>
-    <article class="custom rv" id="plano-personalizado" aria-labelledby="pn-personalizado"><div class="cu-l"><span class="badge badge-x">Sob medida</span><h3 id="pn-personalizado">Não se identificou com nenhum plano? <em>Montamos o seu.</em></h3><p>Cada negócio está em um momento diferente. No Plano Personalizado, o escopo é definido com você, combinando as entregas que o seu negócio precisa agora.</p><p class="cu-price"><span class="pill">Sob consulta</span><span class="per">valor definido a partir do escopo</span></p><a class="btn btn-accent btn-lg mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Vi%20a%20proposta%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%20e%20n%C3%A3o%20me%20identifiquei%20com%20nenhum%20dos%20planos.%20Gostaria%20de%20montar%20um%20plano%20personalizado%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener noreferrer" data-wa="personalizado" data-cur="MONTAR PLANO •">Quero montar meu plano</a></div><div class="cu-r"><p class="base">O que pode entrar no seu plano:</p><ul class="cu-items"><li><button type="button" class="cu-it tap" data-item="" data-cur="ADICIONAR •">Quantidade de publicações por mês</button></li><li><button type="button" class="cu-it tap" data-item="Captação presencial de fotos e vídeos" data-cur="ADICIONAR •">Captação presencial de fotos e vídeos</button></li><li><button type="button" class="cu-it tap" data-item="Reuniões estratégicas" data-cur="ADICIONAR •">Reuniões estratégicas</button></li><li><button type="button" class="cu-it tap" data-item="Relatórios e análise de desempenho" data-cur="ADICIONAR •">Relatórios e análise de desempenho</button></li><li><button type="button" class="cu-it tap" data-item="Planejamento de campanhas" data-cur="ADICIONAR •">Planejamento de campanhas</button></li><li><button type="button" class="cu-it tap" data-item="Gestão de tráfego pago" data-cur="ADICIONAR •">Gestão de tráfego pago</button></li><li><button type="button" class="cu-it tap" data-item="Captação com drone" data-cur="ADICIONAR •">Captação com drone</button></li><li><button type="button" class="cu-it tap" data-item="" data-cur="ADICIONAR •">Outros serviços da RLSN, como identidade visual, site e produção de vídeo</button></li></ul><p class="base" style="margin-top:26px">Como montamos:</p><ol class="cu-steps"><li><b>Conversa</b><span>Você conta o momento, o público e os objetivos do seu negócio.</span></li><li><b>Escopo</b><span>Definimos juntos as entregas que fazem sentido agora.</span></li><li><b>Proposta</b><span>Você recebe o plano montado, com valor e condições.</span></li></ol></div></article>
+    <article class="custom cu-compact rv" id="plano-personalizado" aria-labelledby="pn-personalizado"><div class="cu-head"><span class="badge badge-x">Sob medida</span><h3 id="pn-personalizado">Nenhum plano é a sua cara? <em>Montamos o seu.</em></h3><p class="cu-sub">Você escolhe só o que precisa. Valor sob consulta.</p></div><div class="cu-actions"><a class="btn btn-accent mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Vi%20a%20proposta%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%20e%20n%C3%A3o%20me%20identifiquei%20com%20nenhum%20dos%20planos.%20Gostaria%20de%20montar%20um%20plano%20personalizado%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener noreferrer" data-wa="personalizado" data-cur="MONTAR PLANO •">Quero montar meu plano</a><button type="button" class="cu-more tap" aria-expanded="false" aria-controls="cu-det" data-cur="SAIBA MAIS •">Saiba mais <i aria-hidden="true"></i></button></div><div class="cu-det" id="cu-det" hidden><p class="base">O que pode entrar no seu plano</p><ul class="cu-items"><li><button type="button" class="cu-it tap" data-item="" data-cur="ADICIONAR •">Publicações por mês</button></li><li><button type="button" class="cu-it tap" data-item="Captação presencial de fotos e vídeos" data-cur="ADICIONAR •">Captação presencial de fotos e vídeos</button></li><li><button type="button" class="cu-it tap" data-item="Reuniões estratégicas" data-cur="ADICIONAR •">Reuniões estratégicas</button></li><li><button type="button" class="cu-it tap" data-item="Relatórios e análise de desempenho" data-cur="ADICIONAR •">Relatórios e análise de desempenho</button></li><li><button type="button" class="cu-it tap" data-item="Planejamento de campanhas" data-cur="ADICIONAR •">Planejamento de campanhas</button></li><li><button type="button" class="cu-it tap" data-item="Gestão de tráfego pago" data-cur="ADICIONAR •">Gestão de tráfego pago</button></li><li><button type="button" class="cu-it tap" data-item="Captação com drone" data-cur="ADICIONAR •">Captação com drone</button></li><li><button type="button" class="cu-it tap" data-item="Identidade visual" data-cur="ADICIONAR •">Identidade visual</button></li><li><button type="button" class="cu-it tap" data-item="Site" data-cur="ADICIONAR •">Site</button></li><li><button type="button" class="cu-it tap" data-item="Produção de vídeo" data-cur="ADICIONAR •">Produção de vídeo</button></li></ul><p class="cu-hint">Toque em um item para começar a montar.</p></div></article>
     <div class="plans-foot rv">
-      <p><strong>Verba de anúncios não inclusa na mensalidade.</strong> O valor investido em mídia paga é separado. A gestão de tráfego já está inclusa no Premium Estratégico e no Premium 360°.</p>
-      <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Conheci%20a%20proposta%20comercial%20da%20RLSN%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20planos%20de%20gest%C3%A3o%20de%20redes%20sociais." target="_blank" rel="noopener noreferrer" data-wa="duvidas" data-cur="FALAR NO WHATSAPP •">Ainda em dúvida? Fale com a RLSN</a>
+      <p><strong>Verba de anúncios não inclusa.</strong> É paga à parte.</p>
     </div>
     <a class="next rv" href="#comparar" data-cur="COMPARAR •"><span>Ficou entre dois planos?</span><b>Compare as entregas lado a lado</b><i aria-hidden="true"></i></a>
   </div>
@@ -751,15 +939,15 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
       <p class="kick rv">Comparação rápida</p>
       <h2 class="tt" id="h-comp">Tudo lado a lado, <em>para decidir com clareza.</em></h2>
     </div>
-    <div class="tabs rv" role="tablist" aria-label="Escolha o plano para comparar"><button type="button" class="tab tap" data-col="0" role="tab" aria-selected="false">Básico</button><button type="button" class="tab tap" data-col="1" role="tab" aria-selected="false">Premium</button><button type="button" class="tab tap on" data-col="2" role="tab" aria-selected="true">Estratégico</button><button type="button" class="tab tap" data-col="3" role="tab" aria-selected="false">360°</button></div>
+    <div class="tabs rv" role="tablist" aria-label="Escolha o plano para comparar"><button type="button" class="tab tap" data-col="0" role="tab" aria-selected="false"><b>Básico</b><span>R$ 650</span></button><button type="button" class="tab tap" data-col="1" role="tab" aria-selected="false"><b>Premium</b><span>R$ 1.050</span></button><button type="button" class="tab tap on" data-col="2" role="tab" aria-selected="true"><b>Estratégico</b><span>R$ 1.950</span></button><button type="button" class="tab tap" data-col="3" role="tab" aria-selected="false"><b>360°</b><span>R$ 2.950</span></button></div>
     <div class="tbl rv">
       <table id="comp-table" data-col="2">
         <caption class="sr">Comparação das entregas dos quatro planos</caption>
-        <thead><tr><th scope="col">Entregas</th><th scope="col" class="c0">Básico</th><th scope="col" class="c1">Premium</th><th scope="col" class="c2 hl">Estratégico</th><th scope="col" class="c3">360°</th></tr></thead>
-        <tbody><tr><th scope="row">Publicações mensais</th><td class="c0">7</td><td class="c1">12</td><td class="c2 hl">14</td><td class="c3">20</td></tr><tr><th scope="row">Planejamento de conteúdo</th><td class="c0">Básico</td><td class="c1">Editorial</td><td class="c2 hl">Estratégico</td><td class="c3">Ampliado</td></tr><tr><th scope="row">Artes, legendas e agendamento</th><td class="c0">Sim</td><td class="c1">Sim</td><td class="c2 hl">Sim</td><td class="c3">Sim</td></tr><tr><th scope="row">Calendário editorial</th><td class="c0 dash">—</td><td class="c1">Sim</td><td class="c2 hl">Sim</td><td class="c3">Sim</td></tr><tr><th scope="row">Relatório e monitoramento</th><td class="c0 dash">—</td><td class="c1">Sim</td><td class="c2 hl">Sim</td><td class="c3">Sim</td></tr><tr><th scope="row">Reuniões estratégicas</th><td class="c0 dash">—</td><td class="c1">Sim</td><td class="c2 hl">1/mês</td><td class="c3">2/mês</td></tr><tr><th scope="row">Captação presencial</th><td class="c0 dash">—</td><td class="c1 dash">—</td><td class="c2 hl">1 sessão/mês</td><td class="c3">2 sessões/mês</td></tr><tr><th scope="row">Planejamento de campanhas</th><td class="c0 dash">—</td><td class="c1 dash">—</td><td class="c2 hl">Sim</td><td class="c3">Sim</td></tr><tr><th scope="row">Análise de indicadores</th><td class="c0 dash">—</td><td class="c1 dash">—</td><td class="c2 hl">Sim</td><td class="c3">Ampliada</td></tr><tr><th scope="row">Gestão de tráfego pago</th><td class="c0 dash">—</td><td class="c1 dash">—</td><td class="c2 hl">Sim</td><td class="c3">Sim</td></tr><tr><th scope="row">Captação com drone</th><td class="c0 dash">—</td><td class="c1 dash">—</td><td class="c2 hl dash">—</td><td class="c3">Sim</td></tr><tr class=total><th scope="row">Investimento mensal</th><td class="c0"><s class="de">R$ 690</s><span class=pill>R$ 650</span></td><td class="c1"><s class="de">R$ 1.150</s><span class=pill>R$ 1.050</span></td><td class="c2 hl"><s class="de">R$ 2.150</s><span class=pill>R$ 1.950</span></td><td class="c3"><s class="de">R$ 3.250</s><span class=pill>R$ 2.950</span></td></tr></tbody>
+        <thead><tr><th scope="col" class="th-lbl">Plano</th><th scope="col" class="c0"><span class="th-n">Básico</span><s class="th-de">R$ 690</s><span class="th-p">R$ 650<small>/mês</small></span></th><th scope="col" class="c1"><span class="th-n">Premium</span><s class="th-de">R$ 1.150</s><span class="th-p">R$ 1.050<small>/mês</small></span></th><th scope="col" class="c2 hl"><span class="th-n">Estratégico</span><s class="th-de">R$ 2.150</s><span class="th-p">R$ 1.950<small>/mês</small></span></th><th scope="col" class="c3"><span class="th-n">360°</span><s class="th-de">R$ 3.250</s><span class="th-p">R$ 2.950<small>/mês</small></span></th></tr></thead>
+        <tbody><tr class="grp"><th scope="rowgroup" colspan="5">Conteúdo</th></tr><tr><th scope="row">Publicações por mês</th><td class="c0"><span class="vl">7</span></td><td class="c1"><span class="vl">12</span></td><td class="c2 hl"><span class="vl">14</span></td><td class="c3"><span class="vl">20</span></td></tr><tr><th scope="row">Artes, legendas e agendamento</th><td class="c0"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Planejamento</th><td class="c0"><span class="vl">Básico</span></td><td class="c1"><span class="vl">Editorial</span></td><td class="c2 hl"><span class="vl">Estratégico</span></td><td class="c3"><span class="vl">Ampliado</span></td></tr><tr><th scope="row">Calendário editorial</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr class="grp"><th scope="rowgroup" colspan="5">Acompanhamento</th></tr><tr><th scope="row">Relatório e monitoramento</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Reuniões estratégicas</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="vl">1 por mês</span></td><td class="c3"><span class="vl">2 por mês</span></td></tr><tr><th scope="row">Análise de indicadores</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="vl">Ampliada</span></td></tr><tr class="grp"><th scope="rowgroup" colspan="5">Produção e anúncios</th></tr><tr><th scope="row">Captação presencial</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="vl">1 por mês</span></td><td class="c3"><span class="vl">2 por mês</span></td></tr><tr><th scope="row">Planejamento de campanhas</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Gestão de tráfego pago</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Captação com drone</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr></tbody>
       </table>
     </div>
-    <p class="tbl-note rv">Valores destacados com permanência mínima de 3 meses. Sem permanência, vale o valor riscado. Mensalidade com vencimento no 1º dia útil do mês.</p>
+    <p class="tbl-note rv">Valores mensais com permanência mínima de 3 meses.</p>
     <a class="next rv" href="#condicoes" data-cur="CONTINUAR •"><span>Antes de fechar</span><b>Veja as condições de pagamento</b><i aria-hidden="true"></i></a>
   </div>
   <div class="shade"></div>
@@ -772,22 +960,22 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
     <div class="sec-head">
       <p class="kick rv">Condições de pagamento</p>
       <h2 class="tt" id="h-cond">Condições claras <em>para começar.</em></h2>
-      <p class="lead rv">O início dos trabalhos ocorre após a confirmação da contratação, do pagamento inicial e do recebimento das informações necessárias.</p>
+      <p class="lead rv">O trabalho começa após a contratação, o pagamento inicial e o briefing.</p>
     </div>
     <div class="cond">
       <div class="box perm rv">
         <div class="perm-txt">
           <span class="tag tag-l">Entenda o valor</span>
           <h3>Permanência mínima de 3 meses</h3>
-          <p>Cada plano mostra dois valores. Você escolhe como quer contratar:</p>
+          <p>Cada plano tem dois valores:</p>
           <div class="perm-opts">
             <div class="po po-on">
               <b>Com permanência mínima de 3 meses</b>
-              <p>Você paga o <strong>valor em destaque</strong>, o preço grande de cada plano, <strong>desde o primeiro mês</strong>. Vale para todos os planos.</p>
+              <p>Paga o <strong>valor em destaque</strong> desde o 1º mês.</p>
             </div>
             <div class="po">
               <b>Sem permanência</b>
-              <p>Você paga o <strong>valor riscado</strong> em cada plano, mês a mês.</p>
+              <p>Paga o <strong>valor riscado</strong>, mês a mês.</p>
             </div>
           </div>
         </div>
@@ -796,12 +984,12 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
           <div class="ex-row ex-on">
             <span>Com permanência de 3 meses</span>
             <b><span class="pill">R$ 650</span>/mês</b>
-            <small>desde o 1º mês · economia de R$ 40 por mês</small>
+            <small>desde o 1º mês</small>
           </div>
           <div class="ex-row">
             <span>Sem permanência</span>
             <b><s>R$ 690</s>/mês</b>
-            <small>valor riscado, mês a mês</small>
+            <small>mês a mês</small>
           </div>
         </div>
       </div>
@@ -809,17 +997,17 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
         <span class="bn">01</span>
         <h3>Pagamento</h3>
         <ul class="pay">
-          <li><b>Vencimento no 1º dia útil do mês</b><span>Mensalidade fixa, todo mês</span></li>
-          <li><b>Primeiro pagamento proporcional</b><span>Na contratação, você paga só os dias até o fim do mês</span></li>
-          <li><b>Clientes de outras cidades</b><span>Pagamento via Pix</span></li>
-          <li><b>Clientes locais</b><span>Pix ou em mãos, quando previamente combinado</span></li>
+          <li><b>Vencimento</b><span>1º dia útil de cada mês</span></li>
+          <li><b>1º pagamento</b><span>Proporcional aos dias até o fim do mês</span></li>
+          <li><b>Outras cidades</b><span>Pix</span></li>
+          <li><b>Clientes locais</b><span>Pix ou em mãos, se combinado</span></li>
         </ul>
       </div>
       <div class="box dark rv">
         <span class="tag">Importante</span>
         <h3>Verba de anúncios</h3>
-        <p>O investimento em mídia paga não está incluído na mensalidade.</p>
-        <p>A gestão de tráfego pago está incluída no Premium Estratégico e no Premium 360°. Nos planos Básico e Premium, pode ser contratada separadamente, mediante orçamento aprovado.</p>
+        <p>A verba de anúncios é paga à parte, fora da mensalidade.</p>
+        <p>Gestão de tráfego: inclusa no Estratégico e no 360°. No Básico e no Premium, orçada à parte.</p>
       </div>
     </div>
 
@@ -837,7 +1025,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
     <p class="lead rv">Antes de comprar, seu cliente olha o seu Instagram. <strong>Faça ele encontrar uma marca que transmite confiança.</strong></p>
     <div class="close rv">
       <a class="btn btn-lg btn-xl btn-pulse mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Vi%20a%20proposta%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%20e%20quero%20come%C3%A7ar.%20Pode%20me%20explicar%20os%20pr%C3%B3ximos%20passos%20para%20contratar%3F" target="_blank" rel="noopener noreferrer" data-wa="comecar" data-cur="VAMOS COMEÇAR •">Quero fortalecer minha marca agora</a>
-      <p class="close-n">Você é levado ao WhatsApp com a mensagem pronta. É só confirmar o envio.</p>
+      <p class="close-n">Mensagem pronta no WhatsApp. É só enviar.</p>
     </div>
     <footer class="rv">
       <span><b>RLSN</b> · Design que posiciona. Estratégia que vende.</span>
@@ -853,10 +1041,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
 <!-- indicação de rolagem (fixa na primeira tela) -->
 <a class="cue" href="#servicos" aria-label="Rolar para conhecer a proposta" data-cur="ROLAR •"><span>Role para conhecer</span><i></i></a>
 
-<!-- CTA flutuante: acompanha a leitura -->
-<div class="fcta" id="fcta">
-  <a class="fc-wa" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Conheci%20a%20proposta%20comercial%20da%20RLSN%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20planos%20de%20gest%C3%A3o%20de%20redes%20sociais." target="_blank" rel="noopener noreferrer" data-wa="duvidas" data-cur="FALAR NO WHATSAPP •">Falar no WhatsApp</a>
-</div>
+
 
 <!-- formulário do Plano Personalizado -->
 <div class="fm" id="fm" role="dialog" aria-modal="true" aria-labelledby="fm-t" aria-hidden="true">
@@ -1163,6 +1348,15 @@ const CONFIG = {
   }, { passive: true });
   showPlan(pIdx);
 
+  /* ---------- "Saiba mais" do plano personalizado ---------- */
+  const cuMore = $('.cu-more'), cuDet = $('#cu-det');
+  if (cuMore) cuMore.addEventListener('click', () => {
+    const open = cuMore.getAttribute('aria-expanded') !== 'true';
+    cuMore.setAttribute('aria-expanded', open); cuDet.hidden = !open;
+    cuMore.firstChild.textContent = open ? 'Ver menos ' : 'Saiba mais ';
+    vib(); requestAnimationFrame(() => { setTops(); req(); });
+  });
+
   /* ---------- guia de escolha: leva ao plano indicado ---------- */
   $$('.pick').forEach(b => b.addEventListener('click', () => {
     const card = d.getElementById(b.dataset.target); if (!card) return;
@@ -1176,23 +1370,9 @@ const CONFIG = {
     setTimeout(() => { const cta = card.querySelector('a[data-wa]'); cta && cta.focus({ preventScroll: true }); }, reduced ? 0 : 700);
   }));
 
-  /* ---------- CTA flutuante ---------- */
-  const fcta = $('#fcta'), aPlanos = d.getElementById('planos'), aContato = d.getElementById('contato'), aComp = d.getElementById('comparar');
-  const fctaUpdate = () => {
-    const y = scrollY, vh = innerHeight;
-    const inHero = y < vh * .7;
-    const atEnd = aContato && y + vh * .6 >= aContato.offsetTop;
-    const inPlans = aPlanos && aComp && y + vh * .5 >= aPlanos.offsetTop && y + vh * .5 < aComp.offsetTop;
-    const pastPlans = aPlanos && y + vh * .5 >= aPlanos.offsetTop;
-    const show = pastPlans && !inHero && !atEnd && !inPlans && !ov.classList.contains('open');
-    fcta.classList.toggle('show', show);
-    fcta.classList.add('s-wa');
-    fcta.setAttribute('aria-hidden', show ? 'false' : 'true');
-    $$('a', fcta).forEach(a => a.tabIndex = show ? 0 : -1);
-  };
   const cue = $('.cue');
   const cueUpdate = () => cue && cue.classList.toggle('gone', scrollY > 60);
-  addEventListener('scroll', () => requestAnimationFrame(() => { fctaUpdate(); cueUpdate(); }), { passive: true });
+  addEventListener('scroll', () => requestAnimationFrame(cueUpdate), { passive: true });
   cueUpdate();
 
   /* ---------- tela antes do WhatsApp ---------- */
@@ -1295,7 +1475,6 @@ const CONFIG = {
   $('#ov-back').addEventListener('click', close);
   d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && ov.classList.contains('open')) close(); });
   addEventListener('pageshow', () => { if (ov.classList.contains('open')) close(); });
-  fctaUpdate();
 })();
 </script>
 </body>
