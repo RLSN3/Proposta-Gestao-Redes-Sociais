@@ -128,7 +128,7 @@ h2.tt{font-size:clamp(36px,5.8vw,76px)}
 /* ---------- planos ---------- */
 .plans{display:grid;gap:16px;grid-template-columns:1fr;align-items:stretch}
 @media (min-width:760px){.plans{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1180px){.plans{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1280px){.plans{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .plan{position:relative;display:flex;flex-direction:column;gap:22px;border:1px solid var(--line);border-radius:var(--box);padding:28px 24px 24px;background:var(--card);
   transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
 .plan h3{font-size:24px;letter-spacing:-.025em;line-height:1.1;margin:0}
@@ -395,7 +395,7 @@ html.fm-lock,html.fm-lock body{overflow:hidden}
 
 /* ---------- seletor de planos (celular e tablet) ---------- */
 .ptabs-wrap,.pnav{display:none}
-@media (max-width:1179px){
+@media (max-width:1279px){
   .js .ptabs-wrap{display:block;max-width:620px;margin:0 auto 16px}
   .js .plans .plan .pdesc{min-height:0}
   .ptabs-l{margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
@@ -481,7 +481,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;border-bottom:0;
 @media (max-width:719px){.btn-pulse.btn-xl{width:calc(100% - 28px)}@keyframes cta-ring{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.08,1.6)}}}
 
 /* ---------- leitura enxuta no celular ---------- */
-@media (max-width:1179px){
+@media (max-width:1279px){
   .js .guide{display:none}
   .step{padding:14px 0;grid-template-columns:44px 1fr;gap:12px}
   .step h3{font-size:18px}
@@ -739,6 +739,179 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
 .cu-det .cu-items{justify-content:center}
 .cu-hint{margin:12px 0 0;font-size:13.5px;color:var(--mut)}
 @media (max-width:719px){.cu-actions{width:100%;flex-direction:column}.cu-actions .btn,.cu-more{width:100%;justify-content:center}}
+
+/* ---------- Gestão de tráfego pago ---------- */
+.trf{margin-top:clamp(64px,9vw,110px);padding-top:clamp(48px,7vw,80px);border-top:1px solid var(--line)}
+.trf-how{display:grid;grid-template-columns:1fr;gap:10px;align-items:stretch;margin-bottom:22px}
+@media (min-width:760px){.trf-how{grid-template-columns:1fr auto 1fr}}
+.th-b{border:1px solid var(--line);border-radius:var(--r-card);padding:var(--pad);background:rgba(255,255,255,.03)}
+.th-k{display:block;font-size:var(--t-lab);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+.th-b b{display:block;font-size:var(--t-h);margin-bottom:4px}
+.th-b p{margin:0;color:var(--mut);font-size:var(--t-sm)}
+.th-plus{display:grid;place-items:center;font-size:28px;font-weight:300;color:var(--mut);line-height:1}
+.tcards{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:900px){.tcards{grid-template-columns:repeat(2,1fr)}}@media (min-width:1280px){.tcards{grid-template-columns:repeat(4,1fr)}}
+.tcard{position:relative;display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:var(--r-card);padding:calc(var(--pad) + 4px) var(--pad) var(--pad);background:#222}
+.tcard h3{margin:0;font-size:var(--t-xl);letter-spacing:-.025em}
+.t-desc{margin:0 0 10px;color:var(--mut);font-size:var(--t-sm)}
+.t-from{margin:0;font-size:var(--t-sm);color:var(--mut)}
+.t-now{display:flex;align-items:baseline;gap:6px;margin:4px 0 6px}
+.t-now .pill{font-size:24px;padding:7px 16px;background:#fff;color:#1a1a1a}
+.t-now .per{color:var(--mut);font-weight:600}
+.t-save{margin:0;font-size:var(--t-sm);font-weight:600;color:var(--acc)}
+.t-verba{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:12px 0 6px;padding:11px 14px;border-radius:var(--r-in);background:rgba(64,224,208,.1);border:1px solid rgba(64,224,208,.35)}
+.t-verba span{font-size:var(--t-lab);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7fe9de}
+.t-verba b{font-size:var(--t-sm);text-align:right}
+.tcard ul{list-style:none;margin:8px 0 14px;padding:0;display:grid;gap:8px;font-size:var(--t-body);flex:1}
+.tcard li{position:relative;padding-left:24px}
+.tcard .yes li::before{content:"";position:absolute;left:2px;top:.38em;width:11px;height:6px;border-left:2px solid var(--acc);border-bottom:2px solid var(--acc);transform:rotate(-45deg)}
+.tcard .btn{width:100%}
+.tcard.rec{background:#fff;color:#1a1a1a;--fg:#1a1a1a;--bg:#fff;--mut:#5c5c5c;--line:#e3e3e3;--line2:#1a1a1a;--acc:var(--blue-ink);border-color:#fff}
+.tcard.rec .t-now .pill{background:#1a1a1a;color:#fff}
+.tcard.rec .t-verba{background:rgba(37,99,235,.07);border-color:rgba(37,99,235,.3)}
+.tcard.rec .t-verba span{color:var(--blue-ink)}
+@media (hover:hover){.tcard:hover{transform:translateY(-3px);border-color:var(--line2)}.tcard{transition:transform .35s var(--ease),border-color .3s}}
+.trf-ex{margin-top:18px;border:1px solid var(--line);border-radius:var(--r-card);padding:var(--pad);max-width:560px;margin-left:auto;margin-right:auto}
+.trf-ex .ex-k{margin:0 0 10px;color:#c4c4c4!important}
+.trf-sum{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.trf-sum li{display:flex;justify-content:space-between;gap:12px;font-size:var(--t-sm);color:var(--mut)}
+.trf-sum li b{color:var(--fg);font-weight:600}
+.trf-sum li.tot{padding-top:8px;border-top:1px solid var(--line);color:var(--fg);font-weight:600}
+.trf-sum li.all b{font-size:18px;color:#fff}
+.trf .tbl-note{text-align:center}
+@media (max-width:719px){.trf-head{text-align:center}.th-plus{padding:2px 0}}
+
+.t-verba{display:grid!important;grid-template-columns:1fr;gap:2px;justify-content:start}
+.t-verba b{text-align:left!important;font-size:var(--t-body)!important}
+.ttabs{display:none}
+@media (max-width:899px){
+  .js .ttabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:5px;border:1px solid var(--line);border-radius:17px;margin:0 auto 14px;max-width:620px}
+  .ttab{display:flex;flex-direction:column;align-items:center;gap:1px;min-height:54px;border:0;border-radius:12px;background:transparent;color:var(--fg);cursor:pointer}
+  .ttab b{font-size:var(--t-sm)}.ttab span{font-size:var(--t-lab);color:var(--mut)}
+  .ttab[aria-selected=true]{background:#fff;color:#1a1a1a}.ttab[aria-selected=true] span{color:#5c5c5c}
+  .js .tcards{max-width:620px;margin:0 auto}
+  .js .tcards .tcard{display:none}
+  .js .tcards .tcard.is-on{display:flex;animation:pin .4s var(--ease)}
+  .trf-how{gap:8px}.th-b{padding:16px 18px}
+}
+
+.trf-how{grid-template-areas:none}
+.th-t{grid-column:1/-1;margin:0 0 2px;text-align:center;font-weight:600;font-size:var(--t-body)}
+.trf-sum li.all{font-size:var(--t-body)}
+
+/* ---------- combo redes + anúncios ---------- */
+.trf-deal{max-width:720px;margin:0 auto 22px;text-align:center;padding:var(--pad);border-radius:var(--r-card);border:1.5px solid #40e0d0;background:rgba(64,224,208,.08)}
+.trf-deal .tag-l{background:#40e0d0;color:#0d2420}
+.trf-deal b{display:block;font-size:var(--t-h);line-height:1.25;margin:4px 0 6px}
+.trf-deal p{margin:0;color:var(--mut);font-size:var(--t-sm)}
+.t-prices{display:grid;gap:8px;margin:2px 0 4px}
+.tp{border-radius:var(--r-in);padding:12px 14px}
+.tp-combo{border:1.5px solid #40e0d0;background:rgba(64,224,208,.08)}
+.tp-k{display:block;font-size:var(--t-lab);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.tp-combo .tp-k{color:#7fe9de}
+.tp-combo .t-now{margin:6px 0 2px}
+.tp-s{font-size:var(--t-sm);font-weight:600;color:#7fe9de}
+.tp-solo{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line)}
+.tp-solo b{font-size:18px;white-space:nowrap}.tp-solo small{font-size:13px;color:var(--mut);font-weight:600}
+.tcard.rec .tp-combo{border-color:var(--blue-ink);background:rgba(37,99,235,.06)}
+.tcard.rec .tp-combo .tp-k,.tcard.rec .tp-s{color:var(--blue-ink)}
+.tcard .t-verba{background:transparent!important;border:1px dashed var(--line)!important}
+.tcard .t-verba span{color:var(--mut)!important}
+.t-solo-link{display:flex;justify-content:center;align-items:center;min-height:44px;margin-top:4px;font-size:var(--t-sm);font-weight:600;color:var(--mut);text-decoration:underline;text-underline-offset:4px}
+@media (hover:hover){.t-solo-link:hover{color:var(--fg)}}
+.trf-sum li b s{font-weight:500;color:var(--mut);margin-left:6px;font-size:13px}
+.ttab span{white-space:nowrap}
+@media (max-width:400px){.ttab b{font-size:14px}}
+
+/* ---------- exemplos por plano ---------- */
+.trf-exs{margin-top:clamp(36px,5vw,56px)}
+.exs-h{margin:0 0 8px;text-align:center;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.025em}
+.exs-l{margin:0 auto 18px;max-width:640px;text-align:center;color:var(--mut);font-size:var(--t-sm);line-height:1.5}
+.exs-l b{color:var(--fg)}
+.excs{display:grid;gap:12px;grid-template-columns:1fr}
+@media (min-width:760px){.excs{grid-template-columns:repeat(2,1fr)}}
+.exc{border:1px solid var(--line);border-radius:var(--r-card);padding:var(--pad);background:rgba(255,255,255,.03)}
+.exc-t{margin:0 0 12px;font-size:var(--t-h);font-weight:700;letter-spacing:-.02em}
+.exc-t span{color:var(--mut);font-weight:500}
+.exc .trf-sum li{font-size:var(--t-sm)}
+.exc .trf-sum li span{max-width:62%}
+.exc .trf-sum b.inc{color:#7fe9de}
+.exc .trf-sum li.all b{font-size:16px;text-align:right}
+.extabs{display:none}
+@media (max-width:759px){
+  .js .extabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:5px;border:1px solid var(--line);border-radius:17px;margin:0 0 12px}
+  .extab{min-height:46px;border:0;border-radius:12px;background:transparent;color:var(--fg);font-size:var(--t-sm);cursor:pointer}
+  .extab[aria-selected=true]{background:#fff;color:#1a1a1a}
+  .js .excs .exc{display:none}
+  .js .excs .exc.is-on{display:block;animation:pin .4s var(--ease)}
+}
+.excs{max-width:900px;margin:0 auto}
+.exc .trf-sum li b{white-space:nowrap}
+.exc .trf-sum li span{max-width:none}
+
+.exs-note{max-width:680px;margin:0 auto 18px;padding:14px 18px;border-radius:var(--r-in);border:1px solid rgba(64,224,208,.4);background:rgba(64,224,208,.07);text-align:center;font-size:var(--t-sm);line-height:1.5;color:var(--mut)}
+.exs-note b{color:var(--fg)}
+.exg{margin:10px 0 6px;font-size:var(--t-lab);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.exg-r{color:var(--acc)}.exg-m{color:#7fe9de}
+.exc .trf-sum{gap:6px}
+.ex-tot{display:flex;justify-content:space-between;gap:12px;margin:12px 0 0;padding:12px 14px;border-radius:var(--r-in);background:#fff;color:#1a1a1a}
+.ex-tot span{font-weight:600;font-size:var(--t-sm)}.ex-tot b{font-size:17px;white-space:nowrap}
+@media (min-width:1280px){.tcard .tp-solo b{font-size:16px}.tcard h3{font-size:21px}.tcard .t-now .pill{font-size:21px}}
+@media (max-width:400px){.ttab b{font-size:13px}.ttab span{font-size:12px}}
+
+.imp{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px}
+.imp li{border:1px solid rgba(255,255,255,.14);border-radius:var(--r-in);padding:14px 16px}
+.imp-k{display:block;font-size:var(--t-lab);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7aa5ff;margin-bottom:4px}
+.imp li:nth-child(2) .imp-k{color:#7fe9de}
+.imp b{display:block;font-size:var(--t-body);color:#fff;margin-bottom:2px}
+.imp p{margin:0!important;font-size:var(--t-sm)!important;color:#b0b0b0}
+
+@media (min-width:1280px){
+  .tcards{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px}
+  .tcard{padding:22px 18px 18px}
+  .tp{padding:11px 12px}
+  .tp-solo{flex-direction:column;align-items:flex-start;gap:2px}
+  .tp-k{font-size:12px!important;letter-spacing:.05em}
+  .t-verba span{font-size:12px!important}
+  .t-verba b{font-size:var(--t-sm)!important}
+  .tcard ul{font-size:var(--t-sm)}
+}
+
+/* ---------- simulador ---------- */
+.sim{margin-top:clamp(36px,5vw,56px)}
+.sim-box{display:grid;gap:18px;grid-template-columns:1fr;max-width:980px;margin:0 auto 16px;padding:var(--pad);border:1px solid var(--line);border-radius:var(--r-card);background:rgba(255,255,255,.03)}
+@media (min-width:900px){.sim-box{grid-template-columns:1fr 1fr;align-items:start}.sim-res{grid-column:2;grid-row:1/span 2}}
+.sim-k{margin:0 0 10px;font-size:var(--t-lab);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.sim-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.sim-opt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:56px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-in);background:transparent;color:var(--fg);text-align:left;cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .18s}
+.sim-opt b{font-size:var(--t-sm)}.sim-opt span{font-size:var(--t-lab);color:var(--mut)}
+.sim-opt[aria-checked=true]{background:#fff;color:#1a1a1a;border-color:#fff}
+.sim-opt[aria-checked=true] span{color:#5c5c5c}
+.sim-opt.wide{grid-column:1/-1}
+.sim-opt:active{transform:scale(.97)}
+@media (hover:hover){.sim-opt:hover{border-color:var(--line2)}}
+.sim-res{border-radius:var(--r-card);padding:var(--pad);background:#222;border:1px solid var(--line)}
+.sim-title{margin:0 0 4px;font-size:var(--t-h);font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.sim-res .trf-sum li{font-size:var(--t-sm)}
+.sim-res .trf-sum li b{white-space:nowrap}
+.sim-res .trf-sum li b s{margin-left:6px}
+.sim-res .trf-sum b.inc{color:#7fe9de}
+.sim-deal{margin:12px 0 0;padding:10px 12px;border-radius:var(--r-in);font-size:var(--t-sm);line-height:1.45;background:rgba(64,224,208,.1);border:1px solid rgba(64,224,208,.35);color:#c9f5f0}
+.sim-deal:empty{display:none}
+.sim-cta{width:100%;margin-top:14px}
+
+/* mínimo de 13px em todos os rótulos */
+.tp-k,.t-verba span,.ptab span,.tab span,.ttab span,.extab,.sim-opt span{font-size:13px!important}
+@media (min-width:1280px){.tp-k{letter-spacing:.03em!important}.t-verba span{letter-spacing:.03em!important}}
+.plan .price .pill,.plan .now .pill{white-space:nowrap}
+@media (min-width:1280px) and (max-width:1439px){.plan{padding:22px 16px 18px}.plan .now .pill{font-size:22px}.plan .btn{padding-left:14px;padding-right:14px;font-size:15px}}
+
+.sim-box{grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.sim-box{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.sim-opt,.sim-opt b,.sim-opt span{min-width:0;overflow-wrap:anywhere}
+.sim-step,.sim-res{min-width:0}
+@media (max-width:380px){.sim-box{padding:14px}.sim-res{padding:16px 14px}.sim-opt{padding:9px 10px}.sim-res .trf-sum li{gap:8px}}
+@media (max-width:380px){.ex-tot{flex-wrap:wrap;gap:2px 10px;padding:11px 12px}.ex-tot b{font-size:16px}}
 </style>
 </head>
 <body>
@@ -875,7 +1048,7 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
     <div class="faq" id="duvidas">
       <p class="kick rv">Perguntas frequentes</p>
       <h2 class="tt">Dúvidas <em>frequentes.</em></h2>
-      <div style="margin-top:30px"><div class="qg"><h3 class="qg-t rv">Como trabalhamos</h3><details class="qa rv tap qa-key" data-cur="ABRIR •"><summary><span>Como funciona o trabalho?</span><i aria-hidden="true"></i></summary><p>Planejamos o mês, criamos, você aprova e agendamos. Nada é postado sem estratégia.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Por que não postar por conta própria?</span><i aria-hidden="true"></i></summary><p>Sem planejamento o perfil fica irregular. Aqui cada post tem um objetivo, e você ganha tempo.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso enviar fotos e vídeos?</span><i aria-hidden="true"></i></summary><p>No Básico e no Premium, sim. No Estratégico e no 360°, a captação está inclusa.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso passar minha senha?</span><i aria-hidden="true"></i></summary><p>Não. O acesso é liberado pela Meta e a conta continua sua.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Vocês respondem comentários e mensagens?</span><i aria-hidden="true"></i></summary><p>Não está incluso. Pode ser orçado à parte.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pedir alterações?</span><i aria-hidden="true"></i></summary><p>Sim, dentro do escopo combinado.</p></details></div><div class="qg"><h3 class="qg-t rv">Resultados</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Em quanto tempo vejo resultados?</span><i aria-hidden="true"></i></summary><p>Presença digital se constrói com constância, mês a mês.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os resultados são garantidos?</span><i aria-hidden="true"></i></summary><p>Números não podem ser garantidos. O método e a constância, sim.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os anúncios estão inclusos?</span><i aria-hidden="true"></i></summary><p>A verba é paga à parte. A gestão de tráfego está inclusa no Estratégico e no 360°.</p></details></div><div class="qg"><h3 class="qg-t rv">Pagamento</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>E se nenhum plano servir?</span><i aria-hidden="true"></i></summary><p>Montamos um plano personalizado com você.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Atendem outras cidades?</span><i aria-hidden="true"></i></summary><p>Sim. Tudo a distância, com pagamento via Pix.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pagar no cartão?</span><i aria-hidden="true"></i></summary><p>Não. Só Pix, 100% online. Clientes locais podem pagar em mãos.</p></details></div></div>
+      <div style="margin-top:30px"><div class="qg"><h3 class="qg-t rv">Como trabalhamos</h3><details class="qa rv tap qa-key" data-cur="ABRIR •"><summary><span>Como funciona o trabalho?</span><i aria-hidden="true"></i></summary><p>Planejamos o mês, criamos, você aprova e agendamos. Nada é postado sem estratégia.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Por que não postar por conta própria?</span><i aria-hidden="true"></i></summary><p>Sem planejamento o perfil fica irregular. Aqui cada post tem um objetivo, e você ganha tempo.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso enviar fotos e vídeos?</span><i aria-hidden="true"></i></summary><p>No Básico e no Premium, sim. No Estratégico e no 360°, a captação está inclusa.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Preciso passar minha senha?</span><i aria-hidden="true"></i></summary><p>Não. O acesso é liberado pela Meta e a conta continua sua.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Vocês respondem comentários e mensagens?</span><i aria-hidden="true"></i></summary><p>Não está incluso. Pode ser orçado à parte.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pedir alterações?</span><i aria-hidden="true"></i></summary><p>Sim, dentro do escopo combinado.</p></details></div><div class="qg"><h3 class="qg-t rv">Resultados</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Em quanto tempo vejo resultados?</span><i aria-hidden="true"></i></summary><p>Presença digital se constrói com constância, mês a mês.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os resultados são garantidos?</span><i aria-hidden="true"></i></summary><p>Números não podem ser garantidos. O método e a constância, sim.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Os anúncios estão inclusos?</span><i aria-hidden="true"></i></summary><p>A verba é paga direto à Meta. A gestão é adicional no Básico e no Premium, com preço especial no combo. Já está inclusa no Estratégico e no 360°.</p></details></div><div class="qg"><h3 class="qg-t rv">Pagamento</h3><details class="qa rv tap" data-cur="ABRIR •"><summary><span>E se nenhum plano servir?</span><i aria-hidden="true"></i></summary><p>Montamos um plano personalizado com você.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Atendem outras cidades?</span><i aria-hidden="true"></i></summary><p>Sim. Tudo a distância, com pagamento via Pix.</p></details><details class="qa rv tap" data-cur="ABRIR •"><summary><span>Posso pagar no cartão?</span><i aria-hidden="true"></i></summary><p>Não. Só Pix, 100% online. Clientes locais podem pagar em mãos.</p></details></div></div>
     </div>
     <a class="next rv" href="#planos" data-cur="CONTINUAR •"><span>Dúvidas respondidas? Agora, o investimento</span><b>Escolha o plano ideal para o seu momento</b><i aria-hidden="true"></i></a>
   </div>
@@ -898,13 +1071,13 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
     </div>
     <div class="plans"><article class="plan rv tap" id="plano-basico" aria-labelledby="pn-basico">
   <header><h3 id="pn-basico">Básico</h3><p class="pdesc">Para profissionalizar seu Instagram.</p>
-  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 690/mês</s> por</p><p class="now"><span class="pill">R$ 650</span><span class="per">/mês</span></p><p class="save">Economize R$ 40/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>7 por mês</b></li><li class="off"><span>Reuniões</span><b>Não inclui</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Não inclui</b></li></ul></header>
-  <div class="inc"><p class="base">Inclui:</p><ul class="yes"><li>7 publicações por mês</li><li>Planejamento básico</li><li>Artes e legendas</li><li>Agendamento</li><li>Organização do perfil</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Reunião estratégica</li><li>Relatório mensal</li><li>Tráfego pago</li></ul></div>
+  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 690/mês</s> por</p><p class="now"><span class="pill">R$ 650</span><span class="per">/mês</span></p><p class="save">Economize R$ 40/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>7 por mês</b></li><li class="off"><span>Reuniões</span><b>Não inclui</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Adicional</b></li></ul></header>
+  <div class="inc"><p class="base">Inclui:</p><ul class="yes"><li>7 publicações por mês</li><li>Planejamento básico</li><li>Artes e legendas</li><li>Agendamento</li><li>Organização do perfil</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Reunião estratégica</li><li>Relatório mensal</li><li>Tráfego pago (adicional)</li></ul></div>
   <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20B%C3%A1sico%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%20650%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="basico" data-cur="CONTRATAR NO WHATSAPP •">Quero organizar meu Instagram</a>
 </article><article class="plan rv tap" id="plano-premium" aria-labelledby="pn-premium">
   <header><h3 id="pn-premium">Premium</h3><p class="pdesc">Para postar com mais frequência.</p>
-  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 1.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.050</span><span class="per">/mês</span></p><p class="save">Economize R$ 100/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>12 por mês</b></li><li class="on"><span>Reuniões</span><b>Inclusa</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Não inclui</b></li></ul></header>
-  <div class="inc"><p class="base">Tudo do Básico +</p><ul class="yes"><li>12 publicações por mês</li><li>Calendário editorial</li><li>Relatório mensal</li><li>Monitoramento de resultados</li><li>Reunião estratégica</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Planejamento de campanhas</li><li>Tráfego pago</li></ul></div>
+  <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 1.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.050</span><span class="per">/mês</span></p><p class="save">Economize R$ 100/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>12 por mês</b></li><li class="on"><span>Reuniões</span><b>Inclusa</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Adicional</b></li></ul></header>
+  <div class="inc"><p class="base">Tudo do Básico +</p><ul class="yes"><li>12 publicações por mês</li><li>Calendário editorial</li><li>Relatório mensal</li><li>Monitoramento de resultados</li><li>Reunião estratégica</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Planejamento de campanhas</li><li>Tráfego pago (adicional)</li></ul></div>
   <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Premium%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.050%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" data-wa="premium" data-cur="CONTRATAR NO WHATSAPP •">Quero mais consistência</a>
 </article><article class="plan rv tap rec" id="plano-estrategico" aria-labelledby="pn-estrategico">
   <header><span class="badge">Recomendado</span><h3 id="pn-estrategico">Premium Estratégico</h3><p class="pdesc">Para ganhar autoridade e posicionamento.</p>
@@ -944,10 +1117,11 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
       <table id="comp-table" data-col="2">
         <caption class="sr">Comparação das entregas dos quatro planos</caption>
         <thead><tr><th scope="col" class="th-lbl">Plano</th><th scope="col" class="c0"><span class="th-n">Básico</span><s class="th-de">R$ 690</s><span class="th-p">R$ 650<small>/mês</small></span></th><th scope="col" class="c1"><span class="th-n">Premium</span><s class="th-de">R$ 1.150</s><span class="th-p">R$ 1.050<small>/mês</small></span></th><th scope="col" class="c2 hl"><span class="th-n">Estratégico</span><s class="th-de">R$ 2.150</s><span class="th-p">R$ 1.950<small>/mês</small></span></th><th scope="col" class="c3"><span class="th-n">360°</span><s class="th-de">R$ 3.250</s><span class="th-p">R$ 2.950<small>/mês</small></span></th></tr></thead>
-        <tbody><tr class="grp"><th scope="rowgroup" colspan="5">Conteúdo</th></tr><tr><th scope="row">Publicações por mês</th><td class="c0"><span class="vl">7</span></td><td class="c1"><span class="vl">12</span></td><td class="c2 hl"><span class="vl">14</span></td><td class="c3"><span class="vl">20</span></td></tr><tr><th scope="row">Artes, legendas e agendamento</th><td class="c0"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Planejamento</th><td class="c0"><span class="vl">Básico</span></td><td class="c1"><span class="vl">Editorial</span></td><td class="c2 hl"><span class="vl">Estratégico</span></td><td class="c3"><span class="vl">Ampliado</span></td></tr><tr><th scope="row">Calendário editorial</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr class="grp"><th scope="rowgroup" colspan="5">Acompanhamento</th></tr><tr><th scope="row">Relatório e monitoramento</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Reuniões estratégicas</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="vl">1 por mês</span></td><td class="c3"><span class="vl">2 por mês</span></td></tr><tr><th scope="row">Análise de indicadores</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="vl">Ampliada</span></td></tr><tr class="grp"><th scope="rowgroup" colspan="5">Produção e anúncios</th></tr><tr><th scope="row">Captação presencial</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="vl">1 por mês</span></td><td class="c3"><span class="vl">2 por mês</span></td></tr><tr><th scope="row">Planejamento de campanhas</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Gestão de tráfego pago</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Captação com drone</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr></tbody>
+        <tbody><tr class="grp"><th scope="rowgroup" colspan="5">Conteúdo</th></tr><tr><th scope="row">Publicações por mês</th><td class="c0"><span class="vl">7</span></td><td class="c1"><span class="vl">12</span></td><td class="c2 hl"><span class="vl">14</span></td><td class="c3"><span class="vl">20</span></td></tr><tr><th scope="row">Artes, legendas e agendamento</th><td class="c0"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Planejamento</th><td class="c0"><span class="vl">Básico</span></td><td class="c1"><span class="vl">Editorial</span></td><td class="c2 hl"><span class="vl">Estratégico</span></td><td class="c3"><span class="vl">Ampliado</span></td></tr><tr><th scope="row">Calendário editorial</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr class="grp"><th scope="rowgroup" colspan="5">Acompanhamento</th></tr><tr><th scope="row">Relatório e monitoramento</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Reuniões estratégicas</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c2 hl"><span class="vl">1 por mês</span></td><td class="c3"><span class="vl">2 por mês</span></td></tr><tr><th scope="row">Análise de indicadores</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="vl">Ampliada</span></td></tr><tr class="grp"><th scope="rowgroup" colspan="5">Produção e anúncios</th></tr><tr><th scope="row">Captação presencial</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="vl">1 por mês</span></td><td class="c3"><span class="vl">2 por mês</span></td></tr><tr><th scope="row">Planejamento de campanhas</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Gestão de tráfego pago</th><td class="c0"><span class="vl">Adicional</span></td><td class="c1"><span class="vl">Adicional</span></td><td class="c2 hl"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr><tr><th scope="row">Captação com drone</th><td class="c0 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c1 dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c2 hl dash"><span class="nx" aria-hidden="true">—</span><span class="ck-t">Não inclui</span></td><td class="c3"><span class="ck" aria-hidden="true">✓</span><span class="ck-t">Incluso</span></td></tr></tbody>
       </table>
     </div>
     <p class="tbl-note rv">Valores mensais com permanência mínima de 3 meses.</p>
+    <div class="trf" id="trafego"><div class="sec-head trf-head"><p class="kick rv">Adicional · Anúncios</p><h2 class="tt">Anúncios no Instagram e Facebook. <em>Para mais clientes chegando.</em></h2><p class="lead rv">Adicional no Básico e no Premium. Já incluso no Estratégico e no 360°.</p></div><div class="trf-deal rv"><span class="tag tag-l">Condição especial</span><b>Fechou um plano de gestão de redes? Seus anúncios saem mais baratos.</b><p>No combo, você economiza até R$ 500 por mês na gestão de anúncios.</p></div><div class="trf-how rv"><p class="th-t">Você paga dois valores separados:</p><div class="th-b"><span class="th-k">1 · Gestão dos anúncios</span><b>Para a RLSN</b><p>Criamos, configuramos e acompanhamos seus anúncios.</p></div><span class="th-plus" aria-hidden="true">+</span><div class="th-b"><span class="th-k">2 · Investimento em anúncios</span><b>Direto para a Meta</b><p>Pago no cartão cadastrado na sua conta de anúncios. Não passa pela RLSN.</p></div></div><div class="ttabs" role="tablist" aria-label="Níveis de gestão de tráfego"><button type="button" class="ttab tap" role="tab" data-t="tr-essencial" aria-selected="false"><b>Essencial</b><span>R$ 590</span></button><button type="button" class="ttab tap" role="tab" data-t="tr-avancado" aria-selected="false"><b>Avançado</b><span>R$ 990</span></button><button type="button" class="ttab tap" role="tab" data-t="tr-performance" aria-selected="false"><b>Performance</b><span>R$ 1.490</span></button><button type="button" class="ttab tap" role="tab" data-t="tr-escala" aria-selected="false"><b>Escala</b><span>R$ 1.990</span></button></div><div class="tcards"><article class="tcard rv" id="tr-essencial"><h3>Essencial</h3><p class="t-desc">Para começar a anunciar.</p><div class="t-prices"><div class="tp tp-combo"><span class="tp-k">No combo com gestão de redes</span><p class="t-now"><span class="pill">R$ 590</span><span class="per">/mês</span></p><span class="tp-s">Economize R$ 100/mês</span></div><div class="tp tp-solo"><span class="tp-k">Só anúncios</span><b>R$ 690<small>/mês</small></b></div></div><p class="t-verba"><span>Sugestão para os anúncios</span><b>R$ 600 a R$ 1.500/mês</b></p><ul class="yes"><li>Até 2 campanhas ao mesmo tempo</li><li>Anúncios que levam ao WhatsApp</li><li>Ajustes toda semana</li><li>Relatório mensal</li></ul><a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20combo%20da%20RLSN%3A%20gest%C3%A3o%20de%20redes%20sociais%20%2B%20tr%C3%A1fego%20pago%20Meta%20Ads%20n%C3%ADvel%20Essencial%2C%20com%20a%20gest%C3%A3o%20de%20tr%C3%A1fego%20por%20R%24%20590%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20qual%20plano%20de%20redes%20combina%20comigo." target="_blank" rel="noopener noreferrer" data-wa="tr-essencial-combo" data-cur="CONTRATAR NO WHATSAPP •">Quero no combo</a><a class="t-solo-link tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20s%C3%B3%20na%20gest%C3%A3o%20de%20tr%C3%A1fego%20pago%20Meta%20Ads%20da%20RLSN%2C%20n%C3%ADvel%20Essencial%2C%20no%20valor%20de%20R%24%20690%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona." target="_blank" rel="noopener noreferrer" data-wa="tr-essencial" data-cur="CONTRATAR •">Quero só os anúncios</a></article><article class="tcard rv rec" id="tr-avancado"><span class="badge">Recomendado</span><h3>Avançado</h3><p class="t-desc">Para ter contatos todo mês.</p><div class="t-prices"><div class="tp tp-combo"><span class="tp-k">No combo com gestão de redes</span><p class="t-now"><span class="pill">R$ 990</span><span class="per">/mês</span></p><span class="tp-s">Economize R$ 200/mês</span></div><div class="tp tp-solo"><span class="tp-k">Só anúncios</span><b>R$ 1.190<small>/mês</small></b></div></div><p class="t-verba"><span>Sugestão para os anúncios</span><b>R$ 1.500 a R$ 5.000/mês</b></p><ul class="yes"><li>Até 4 campanhas ao mesmo tempo</li><li>Anúncios para quem já viu seu perfil</li><li>Ajustes 2x por semana</li><li>Relatório a cada 15 dias + 1 reunião</li></ul><a class="btn btn-accent mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20combo%20da%20RLSN%3A%20gest%C3%A3o%20de%20redes%20sociais%20%2B%20tr%C3%A1fego%20pago%20Meta%20Ads%20n%C3%ADvel%20Avan%C3%A7ado%2C%20com%20a%20gest%C3%A3o%20de%20tr%C3%A1fego%20por%20R%24%20990%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20qual%20plano%20de%20redes%20combina%20comigo." target="_blank" rel="noopener noreferrer" data-wa="tr-avancado-combo" data-cur="CONTRATAR NO WHATSAPP •">Quero no combo</a><a class="t-solo-link tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20s%C3%B3%20na%20gest%C3%A3o%20de%20tr%C3%A1fego%20pago%20Meta%20Ads%20da%20RLSN%2C%20n%C3%ADvel%20Avan%C3%A7ado%2C%20no%20valor%20de%20R%24%201.190%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona." target="_blank" rel="noopener noreferrer" data-wa="tr-avancado" data-cur="CONTRATAR •">Quero só os anúncios</a></article><article class="tcard rv" id="tr-performance"><h3>Performance</h3><p class="t-desc">Para quem quer investir mais.</p><div class="t-prices"><div class="tp tp-combo"><span class="tp-k">No combo com gestão de redes</span><p class="t-now"><span class="pill">R$ 1.490</span><span class="per">/mês</span></p><span class="tp-s">Economize R$ 300/mês</span></div><div class="tp tp-solo"><span class="tp-k">Só anúncios</span><b>R$ 1.790<small>/mês</small></b></div></div><p class="t-verba"><span>Sugestão para os anúncios</span><b>R$ 5.000 a R$ 15.000/mês</b></p><ul class="yes"><li>Até 8 campanhas ao mesmo tempo</li><li>Testes para achar o melhor anúncio</li><li>Medição de contatos e vendas</li><li>Relatório semanal + 2 reuniões</li></ul><a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20combo%20da%20RLSN%3A%20gest%C3%A3o%20de%20redes%20sociais%20%2B%20tr%C3%A1fego%20pago%20Meta%20Ads%20n%C3%ADvel%20Performance%2C%20com%20a%20gest%C3%A3o%20de%20tr%C3%A1fego%20por%20R%24%201.490%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20qual%20plano%20de%20redes%20combina%20comigo." target="_blank" rel="noopener noreferrer" data-wa="tr-performance-combo" data-cur="CONTRATAR NO WHATSAPP •">Quero no combo</a><a class="t-solo-link tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20s%C3%B3%20na%20gest%C3%A3o%20de%20tr%C3%A1fego%20pago%20Meta%20Ads%20da%20RLSN%2C%20n%C3%ADvel%20Performance%2C%20no%20valor%20de%20R%24%201.790%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona." target="_blank" rel="noopener noreferrer" data-wa="tr-performance" data-cur="CONTRATAR •">Quero só os anúncios</a></article><article class="tcard rv" id="tr-escala"><h3>Escala</h3><p class="t-desc">Para grandes investimentos.</p><div class="t-prices"><div class="tp tp-combo"><span class="tp-k">No combo com gestão de redes</span><p class="t-now"><span class="pill">R$ 1.990</span><span class="per">/mês</span></p><span class="tp-s">Economize R$ 500/mês</span></div><div class="tp tp-solo"><span class="tp-k">Só anúncios</span><b>R$ 2.490<small>/mês</small></b></div></div><p class="t-verba"><span>Sugestão para os anúncios</span><b>R$ 15.000 a R$ 30.000/mês</b></p><ul class="yes"><li>Até 12 campanhas ao mesmo tempo</li><li>Acompanhamento diário</li><li>Estratégia por produto ou serviço</li><li>Relatório semanal + reunião semanal</li></ul><a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20combo%20da%20RLSN%3A%20gest%C3%A3o%20de%20redes%20sociais%20%2B%20tr%C3%A1fego%20pago%20Meta%20Ads%20n%C3%ADvel%20Escala%2C%20com%20a%20gest%C3%A3o%20de%20tr%C3%A1fego%20por%20R%24%201.990%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20qual%20plano%20de%20redes%20combina%20comigo." target="_blank" rel="noopener noreferrer" data-wa="tr-escala-combo" data-cur="CONTRATAR NO WHATSAPP •">Quero no combo</a><a class="t-solo-link tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20s%C3%B3%20na%20gest%C3%A3o%20de%20tr%C3%A1fego%20pago%20Meta%20Ads%20da%20RLSN%2C%20n%C3%ADvel%20Escala%2C%20no%20valor%20de%20R%24%202.490%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona." target="_blank" rel="noopener noreferrer" data-wa="tr-escala" data-cur="CONTRATAR •">Quero só os anúncios</a></article></div><div class="sim" id="simulador"><h3 class="exs-h rv">Simule quanto fica para você</h3><p class="exs-l rv">Escolha a gestão de redes e o nível de anúncios.</p><div class="sim-box rv"><div class="sim-step"><p class="sim-k">1 · Gestão de redes sociais</p><div class="sim-opts" id="sim-plan" role="radiogroup" aria-label="Plano de gestão de redes"></div></div><div class="sim-step"><p class="sim-k">2 · Gestão de anúncios</p><div class="sim-opts" id="sim-tr" role="radiogroup" aria-label="Nível de anúncios"></div></div><div class="sim-res" aria-live="polite"><p class="sim-title" id="sim-title"></p><p class="exg exg-r">Pago à RLSN</p><ul class="trf-sum" id="sim-rlsn"></ul><p class="exg exg-m">Pago direto à Meta</p><ul class="trf-sum" id="sim-meta"></ul><p class="ex-tot"><span>Investimento total</span><b id="sim-total"></b></p><p class="sim-deal" id="sim-deal"></p><a class="btn btn-accent mag tap sim-cta" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Conheci%20a%20proposta%20comercial%20da%20RLSN%20e%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20planos%20de%20gest%C3%A3o%20de%20redes%20sociais." target="_blank" rel="noopener noreferrer" data-wa="sim" data-cur="CONTRATAR NO WHATSAPP •">Quero essa combinação</a></div></div><div class="exs-note rv"><b>O investimento em anúncios não passa pela RLSN.</b> É pago direto à Meta, no cartão cadastrado na sua conta de anúncios. Os valores mostrados são o mínimo recomendado para cada nível.</div></div><p class="tbl-note rv">Valores com 3 meses de contrato. Sem contrato: R$ 750, R$ 1.290, R$ 1.990 e R$ 2.790. Não inclui: valor dos anúncios, Google e artes extras.</p></div>
     <a class="next rv" href="#condicoes" data-cur="CONTINUAR •"><span>Antes de fechar</span><b>Veja as condições de pagamento</b><i aria-hidden="true"></i></a>
   </div>
   <div class="shade"></div>
@@ -1005,9 +1179,11 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
       </div>
       <div class="box dark rv">
         <span class="tag">Importante</span>
-        <h3>Verba de anúncios</h3>
-        <p>A verba de anúncios é paga à parte, fora da mensalidade.</p>
-        <p>Gestão de tráfego: inclusa no Estratégico e no 360°. No Básico e no Premium, orçada à parte.</p>
+        <h3>Anúncios têm dois valores separados</h3>
+        <ul class="imp">
+          <li><span class="imp-k">1 · Gestão dos anúncios</span><b>Paga à RLSN</b><p>Já inclusa no Estratégico e no 360°. No Básico e no Premium, a partir de R$ 590/mês no combo.</p></li>
+          <li><span class="imp-k">2 · Investimento em anúncios</span><b>Pago direto à Meta</b><p>No cartão cadastrado na sua conta de anúncios. Não passa pela RLSN. Mínimo recomendado: R$ 600/mês.</p></li>
+        </ul>
       </div>
     </div>
 
@@ -1133,6 +1309,46 @@ const CONFIG = {
       "nome": "Plano Personalizado",
       "preco": "Sob consulta",
       "mensagem": "Olá! Vi a proposta de gestão de redes sociais da RLSN e não me identifiquei com nenhum dos planos. Gostaria de montar um plano personalizado para o meu negócio."
+    },
+    "tr-essencial": {
+      "nome": "Só anúncios · Essencial",
+      "preco": "R$ 690/mês",
+      "mensagem": "Olá! Tenho interesse só na gestão de tráfego pago Meta Ads da RLSN, nível Essencial, no valor de R$ 690 por mês, com permanência mínima de 3 meses. Gostaria de saber como funciona."
+    },
+    "tr-avancado": {
+      "nome": "Só anúncios · Avançado",
+      "preco": "R$ 1.190/mês",
+      "mensagem": "Olá! Tenho interesse só na gestão de tráfego pago Meta Ads da RLSN, nível Avançado, no valor de R$ 1.190 por mês, com permanência mínima de 3 meses. Gostaria de saber como funciona."
+    },
+    "tr-performance": {
+      "nome": "Só anúncios · Performance",
+      "preco": "R$ 1.790/mês",
+      "mensagem": "Olá! Tenho interesse só na gestão de tráfego pago Meta Ads da RLSN, nível Performance, no valor de R$ 1.790 por mês, com permanência mínima de 3 meses. Gostaria de saber como funciona."
+    },
+    "tr-escala": {
+      "nome": "Só anúncios · Escala",
+      "preco": "R$ 2.490/mês",
+      "mensagem": "Olá! Tenho interesse só na gestão de tráfego pago Meta Ads da RLSN, nível Escala, no valor de R$ 2.490 por mês, com permanência mínima de 3 meses. Gostaria de saber como funciona."
+    },
+    "tr-essencial-combo": {
+      "nome": "Combo redes + anúncios · Essencial",
+      "preco": "R$ 590/mês",
+      "mensagem": "Olá! Tenho interesse no combo da RLSN: gestão de redes sociais + tráfego pago Meta Ads nível Essencial, com a gestão de tráfego por R$ 590 por mês, com permanência mínima de 3 meses. Gostaria de saber qual plano de redes combina comigo."
+    },
+    "tr-avancado-combo": {
+      "nome": "Combo redes + anúncios · Avançado",
+      "preco": "R$ 990/mês",
+      "mensagem": "Olá! Tenho interesse no combo da RLSN: gestão de redes sociais + tráfego pago Meta Ads nível Avançado, com a gestão de tráfego por R$ 990 por mês, com permanência mínima de 3 meses. Gostaria de saber qual plano de redes combina comigo."
+    },
+    "tr-performance-combo": {
+      "nome": "Combo redes + anúncios · Performance",
+      "preco": "R$ 1.490/mês",
+      "mensagem": "Olá! Tenho interesse no combo da RLSN: gestão de redes sociais + tráfego pago Meta Ads nível Performance, com a gestão de tráfego por R$ 1.490 por mês, com permanência mínima de 3 meses. Gostaria de saber qual plano de redes combina comigo."
+    },
+    "tr-escala-combo": {
+      "nome": "Combo redes + anúncios · Escala",
+      "preco": "R$ 1.990/mês",
+      "mensagem": "Olá! Tenho interesse no combo da RLSN: gestão de redes sociais + tráfego pago Meta Ads nível Escala, com a gestão de tráfego por R$ 1.990 por mês, com permanência mínima de 3 meses. Gostaria de saber qual plano de redes combina comigo."
     }
   },
   "formulario": {
@@ -1155,6 +1371,60 @@ const CONFIG = {
       "Produção de vídeo"
     ]
   },
+  "simulador": {
+    "planos": [
+      {
+        "nome": "Básico",
+        "curto": "Básico",
+        "preco": 650,
+        "inclusa": false
+      },
+      {
+        "nome": "Premium",
+        "curto": "Premium",
+        "preco": 1050,
+        "inclusa": false
+      },
+      {
+        "nome": "Premium Estratégico",
+        "curto": "Estratégico",
+        "preco": 1950,
+        "inclusa": true
+      },
+      {
+        "nome": "Premium 360°",
+        "curto": "360°",
+        "preco": 2950,
+        "inclusa": true
+      }
+    ],
+    "trafego": [
+      {
+        "nome": "Essencial",
+        "combo": 590,
+        "solo": 690,
+        "verba": 600
+      },
+      {
+        "nome": "Avançado",
+        "combo": 990,
+        "solo": 1190,
+        "verba": 1500
+      },
+      {
+        "nome": "Performance",
+        "combo": 1490,
+        "solo": 1790,
+        "verba": 5000
+      },
+      {
+        "nome": "Escala",
+        "combo": 1990,
+        "solo": 2490,
+        "verba": 15000
+      }
+    ]
+  },
   "mensagemDuvidas": "Olá! Conheci a proposta comercial da RLSN e gostaria de tirar algumas dúvidas sobre os planos de gestão de redes sociais.",
   "mensagemFinal": "Olá! Conheci a proposta comercial da RLSN e gostaria de conversar sobre a gestão de redes sociais.",
   "mensagemComecar": "Olá! Vi a proposta de gestão de redes sociais da RLSN e quero começar. Pode me explicar os próximos passos para contratar?"
@@ -1173,7 +1443,7 @@ const CONFIG = {
     : key === 'final' ? CONFIG.mensagemFinal : key === 'comecar' ? CONFIG.mensagemComecar : CONFIG.mensagemDuvidas;
 
   // links do WhatsApp sempre de acordo com o CONFIG
-  $$('[data-wa]').forEach(a => { a.href = waUrl(msgFor(a.dataset.wa)); });
+  $$('[data-wa]').forEach(a => { if (a.dataset.wa !== 'sim') a.href = waUrl(msgFor(a.dataset.wa)); });
 
   /* ---------- títulos palavra por palavra ---------- */
   const split = (h) => {
@@ -1314,7 +1584,7 @@ const CONFIG = {
   }
 
   /* ---------- seletor de planos (celular e tablet) ---------- */
-  const mqTabs = matchMedia('(max-width: 1179px)');
+  const mqTabs = matchMedia('(max-width: 1279px)');
   const pCards = $$('.plans .plan'), pTabs = $$('.ptab'), pnav = $('.pnav');
   let pIdx = Math.max(0, pCards.findIndex(c => c.classList.contains('rec')));
   const showPlan = (i, fromUser) => {
@@ -1356,6 +1626,75 @@ const CONFIG = {
     cuMore.firstChild.textContent = open ? 'Ver menos ' : 'Saiba mais ';
     vib(); requestAnimationFrame(() => { setTops(); req(); });
   });
+
+  /* ---------- níveis de tráfego: abas no celular ---------- */
+  const tTabs = $$('.ttab'), tCards = $$('.tcards .tcard');
+  const showT = (i, user) => {
+    tCards.forEach((c, k) => c.classList.toggle('is-on', k === i));
+    tTabs.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+    if (user) vib();
+    requestAnimationFrame(() => { setTops(); req(); });
+  };
+  tTabs.forEach((b, k) => b.addEventListener('click', () => showT(k, true)));
+  if (tCards.length) showT(Math.max(0, tCards.findIndex(c => c.classList.contains('rec'))));
+
+  /* ---------- exemplos por plano: abas no celular ---------- */
+  const exTabs = $$('.extab'), exCards = $$('.excs .exc');
+  const showEx = (i, user) => {
+    exCards.forEach((c, k) => c.classList.toggle('is-on', k === i));
+    exTabs.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+    if (user) vib();
+    requestAnimationFrame(() => { setTops(); req(); });
+  };
+  exTabs.forEach((b, k) => b.addEventListener('click', () => showEx(k, true)));
+  if (exCards.length) showEx(1);
+
+  /* ---------- simulador de investimento ---------- */
+  const SIM = CONFIG.simulador;
+  if (SIM && $('#sim-plan')) {
+    const fmt = v => 'R$ ' + v.toLocaleString('pt-BR');
+    const st = { p: 1, t: 0 };   // Premium + Essencial
+    const planOpts = [...SIM.planos.map(p => ({ b: p.curto, s: fmt(p.preco) + '/mês' })), { b: 'Sem gestão de redes', s: 'Só anúncios', wide: true }];
+    const mk = (box, items, key) => {
+      box.innerHTML = '';
+      items.forEach((it, i) => {
+        const o = d.createElement('button'); o.type = 'button'; o.className = 'sim-opt tap' + (it.wide ? ' wide' : '');
+        o.setAttribute('role', 'radio'); o.innerHTML = '<b></b><span></span>';
+        o.children[0].textContent = it.b; o.children[1].textContent = it.s;
+        o.addEventListener('click', () => { st[key] = i; vib(); render(); });
+        box.append(o);
+      });
+    };
+    mk($('#sim-plan'), planOpts, 'p');
+    const li = (k, v, cls) => `<li${cls ? ` class="${cls}"` : ''}><span>${k}</span><b${v.inc ? ' class="inc"' : ''}>${v.t}</b></li>`;
+    const render = () => {
+      const plan = SIM.planos[st.p] || null, tr = SIM.trafego[st.t];
+      const combo = plan && !plan.inclusa, solo = !plan;
+      mk($('#sim-tr'), SIM.trafego.map(t => ({ b: t.nome, s: solo ? fmt(t.solo) + '/mês' : (plan.inclusa ? 'Gestão inclusa' : 'Combo ' + fmt(t.combo) + '/mês') })), 't');
+      $$('#sim-plan .sim-opt').forEach((o, i) => o.setAttribute('aria-checked', i === st.p));
+      $$('#sim-tr .sim-opt').forEach((o, i) => o.setAttribute('aria-checked', i === st.t));
+      const gest = plan ? (plan.inclusa ? 0 : tr.combo) : tr.solo;
+      const rlsn = (plan ? plan.preco : 0) + gest, total = rlsn + tr.verba;
+      $('#sim-title').textContent = plan ? `Plano ${plan.nome} + Anúncios ${tr.nome}` : `Só anúncios · ${tr.nome}`;
+      let rows = '';
+      if (plan) rows += li('Gestão de redes sociais', { t: fmt(plan.preco) });
+      rows += li(plan ? (plan.inclusa ? 'Gestão de anúncios' : 'Gestão de anúncios (combo)') : 'Gestão de anúncios',
+                 plan && plan.inclusa ? { t: 'Já inclusa', inc: 1 } : { t: fmt(gest) + (combo ? ` <s>${fmt(tr.solo)}</s>` : '') });
+      rows += li('Total RLSN', { t: fmt(rlsn) + '/mês' }, 'tot');
+      $('#sim-rlsn').innerHTML = rows;
+      $('#sim-meta').innerHTML = li('Investimento em anúncios (mínimo)', { t: fmt(tr.verba) + '/mês' });
+      $('#sim-total').textContent = fmt(total) + '/mês';
+      $('#sim-deal').textContent = combo ? `Condição especial do combo: você economiza ${fmt(tr.solo - tr.combo)} por mês na gestão de anúncios.`
+        : solo ? `Fechando também um plano de redes, a gestão de anúncios cai para ${fmt(tr.combo)}/mês.`
+        : `A gestão de anúncios já faz parte do Plano ${plan.nome}. Você paga só o investimento na Meta.`;
+      const msg = plan
+        ? `Olá! Simulei na proposta da RLSN: Plano ${plan.nome} de gestão de redes sociais + gestão de anúncios Meta Ads nível ${tr.nome}. Total RLSN de ${fmt(rlsn)} por mês, com permanência mínima de 3 meses, mais investimento em anúncios a partir de ${fmt(tr.verba)} por mês direto na Meta. Gostaria de seguir com essa combinação.`
+        : `Olá! Simulei na proposta da RLSN: só a gestão de anúncios Meta Ads, nível ${tr.nome}, por ${fmt(gest)} por mês, com permanência mínima de 3 meses, mais investimento em anúncios a partir de ${fmt(tr.verba)} por mês direto na Meta. Gostaria de seguir.`;
+      const cta = $('.sim-cta'); cta.dataset.msg = msg; cta.href = waUrl(msg);
+      requestAnimationFrame(() => { setTops(); req(); });
+    };
+    render();
+  }
 
   /* ---------- guia de escolha: leva ao plano indicado ---------- */
   $$('.pick').forEach(b => b.addEventListener('click', () => {
@@ -1401,7 +1740,7 @@ const CONFIG = {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button > 0) return;
     e.preventDefault(); e.stopImmediatePropagation();
     vib();
-    if (a.dataset.wa === 'personalizado') openForm(); else open(a.dataset.wa);
+    if (a.dataset.wa === 'personalizado') openForm(); else if (a.dataset.wa === 'sim') open('sim', a.dataset.msg); else open(a.dataset.wa);
   }, true);
   /* ---------- formulário do Plano Personalizado ---------- */
   const fm = $('#fm'), form = $('#fm-form'), err = $('#fm-err'), sum = $('#fm-sum');
