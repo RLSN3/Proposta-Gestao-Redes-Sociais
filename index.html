@@ -1247,7 +1247,7 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
     <footer class="rv">
       <span><b>RLSN</b> · Design que posiciona. Estratégia que vende.</span>
       <nav aria-label="Redes">
-        <a href="instagram://user?username=railsonnlima" rel="noopener noreferrer" data-cur="ABRIR •">Instagram</a>
+        <a href="instagram://user?username=railsonnlima" rel="noopener noreferrer" data-cur="ABRIR •" data-instagram-app="railsonnlima">Instagram</a>
         <a href="https://wa.me/5588999878583" target="_blank" rel="noopener noreferrer" data-wa="contato" data-cur="ABRIR •">WhatsApp</a>
       </nav>
     </footer>
@@ -1295,7 +1295,7 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
     <footer class="fm-ft">
       <p class="fm-sum" id="fm-sum">Nenhuma entrega marcada</p>
       <button type="submit" class="btn btn-accent btn-lg">Enviar pelo WhatsApp</button>
-    <footer style="padding:18px 16px 24px;text-align:center;font:500 13px/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#777">Desenvolvido por <a href="instagram://user?username=railsonnlima" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Railson Lima</a></footer></footer>
+    <footer style="padding:18px 16px 24px;text-align:center;font:500 13px/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#777">Desenvolvido por <a href="instagram://user?username=railsonnlima" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:3px" data-instagram-app="railsonnlima">Railson Lima</a></footer></footer>
   </form>
 </div>
 
@@ -1858,5 +1858,5 @@ const CONFIG = {
   addEventListener('pageshow', () => { if (ov.classList.contains('open')) close(); });
 })();
 </script>
-</body>
+<script data-instagram-app-handler>(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[data-instagram-app]"):null;if(!a||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();var u=a.getAttribute("data-instagram-app")||"railsonnlima",ua=navigator.userAgent||"",android=/Android/i.test(ua);if(android){location.href="intent://instagram.com/_u/"+encodeURIComponent(u)+"/#Intent;package=com.instagram.android;scheme=https;end";return}location.href="instagram://user?username="+encodeURIComponent(u)},true)})();</script></body>
 </html>
