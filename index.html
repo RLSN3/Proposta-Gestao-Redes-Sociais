@@ -150,18 +150,17 @@ h2.tt{font-size:clamp(36px,5.8vw,76px)}
 .no li{color:var(--mut)}
 .no li::before{content:"";position:absolute;left:2px;top:.72em;width:11px;height:1.5px;background:var(--mut)}
 
-/* ---------- detalhes expansíveis dos planos ---------- */
-.plan-more{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:0 17px;border:0;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;font-weight:700;line-height:1.2;cursor:pointer;transition:filter .2s,transform .2s}
-.plan-more span{font-size:21px;line-height:1}
-.plan-more:hover{filter:brightness(1.08);transform:translateY(-1px)}
-#plano-basico .plan-more{background:#64748b}
-#plano-premium .plan-more{background:#0f766e}
-#plano-estrategico .plan-more{background:#2563eb}
-#plano-360 .plan-more{background:#7c3aed}
-.plan-details[hidden]{display:none!important}
-.plan-details{display:grid;gap:18px;animation:pin .28s var(--ease)}
-.plan-details .inc{flex:initial}
-.plan-details .exc{border-top:1px solid var(--line);padding-top:18px}
+/* ---------- identidade visual individual dos pacotes ---------- */
+#plano-basico{--plan-color:#64748b;border-top:4px solid #64748b}
+#plano-premium{--plan-color:#0f766e;border-top:4px solid #0f766e}
+#plano-estrategico{--plan-color:#2563eb;border-top:4px solid #2563eb}
+#plano-360{--plan-color:#7c3aed;border-top:4px solid #7c3aed}
+.plans .plan h3{color:var(--plan-color)}
+.plans .plan .price .pill{background:var(--plan-color);color:#fff}
+.plans .plan .btn-line{background:var(--plan-color);border-color:var(--plan-color);color:#fff}
+.plans .plan.rec{--plan-color:#7aa5ff}
+.plans .plan.rec h3{color:var(--plan-color)}
+.plans .plan.rec .price .pill{background:var(--plan-color);color:#101828}
 
 .plan .inc{flex:1}
 .plan .exc{border-top:1px solid var(--line);padding-top:18px}
@@ -1227,31 +1226,23 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
     <div class="plans"><article class="plan rv tap" id="plano-basico" aria-labelledby="pn-basico">
   <header><h3 id="pn-basico">Básico</h3><p class="pdesc">Para profissionalizar seu Instagram.</p>
   <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 690/mês</s> por</p><p class="now"><span class="pill">R$ 650</span><span class="per">/mês</span></p><p class="save">Economize R$ 40/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>7 por mês</b></li><li class="off"><span>Reuniões</span><b>Não inclui</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Adicional</b></li></ul></header>
-    <button class="plan-more" type="button" aria-expanded="false" aria-controls="plano-basico-details">Saiba mais <span aria-hidden="true">+</span></button>
-  <div class="plan-details" id="plano-basico-details" hidden><div class="inc"><p class="base">Inclui:</p><ul class="yes"><li>7 publicações por mês</li><li>Planejamento básico</li><li>Artes e legendas</li><li>Agendamento</li><li>Organização do perfil</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Reunião estratégica</li><li>Relatório mensal</li><li>Tráfego pago (adicional)</li></ul></div>
-  </div>
-  <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20B%C3%A1sico%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%20650%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="basico" data-cur="CONTRATAR NO WHATSAPP •">Quero organizar meu Instagram</a>
+  <div class="inc"><p class="base">Inclui:</p><ul class="yes"><li>7 publicações por mês</li><li>Planejamento básico</li><li>Artes e legendas</li><li>Agendamento</li><li>Organização do perfil</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Reunião estratégica</li><li>Relatório mensal</li><li>Tráfego pago (adicional)</li></ul></div>
+ <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20B%C3%A1sico%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%20650%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20saber%20como%20funciona%20a%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="basico" data-cur="CONTRATAR NO WHATSAPP •">Quero organizar meu Instagram</a>
 </article><article class="plan rv tap" id="plano-premium" aria-labelledby="pn-premium">
   <header><h3 id="pn-premium">Premium</h3><p class="pdesc">Para postar com mais frequência.</p>
   <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 1.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.050</span><span class="per">/mês</span></p><p class="save">Economize R$ 100/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>12 por mês</b></li><li class="on"><span>Reuniões</span><b>Inclusa</b></li><li class="off"><span>Captação</span><b>Não inclui</b></li><li class="off"><span>Tráfego pago</span><b>Adicional</b></li></ul></header>
-    <button class="plan-more" type="button" aria-expanded="false" aria-controls="plano-premium-details">Saiba mais <span aria-hidden="true">+</span></button>
-  <div class="plan-details" id="plano-premium-details" hidden><div class="inc"><p class="base">Tudo do Básico +</p><ul class="yes"><li>12 publicações por mês</li><li>Calendário editorial</li><li>Relatório mensal</li><li>Monitoramento de resultados</li><li>Reunião estratégica</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Planejamento de campanhas</li><li>Tráfego pago (adicional)</li></ul></div>
-  </div>
-  <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Premium%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.050%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" data-wa="premium" data-cur="CONTRATAR NO WHATSAPP •">Quero mais consistência</a>
+  <div class="inc"><p class="base">Tudo do Básico +</p><ul class="yes"><li>12 publicações por mês</li><li>Calendário editorial</li><li>Relatório mensal</li><li>Monitoramento de resultados</li><li>Reunião estratégica</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Captação presencial</li><li>Planejamento de campanhas</li><li>Tráfego pago (adicional)</li></ul></div>
+ <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Plano%20Premium%20de%20gest%C3%A3o%20de%20redes%20sociais%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.050%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" data-wa="premium" data-cur="CONTRATAR NO WHATSAPP •">Quero mais consistência</a>
 </article><article class="plan rv tap rec" id="plano-estrategico" aria-labelledby="pn-estrategico">
   <header><span class="badge">Recomendado</span><h3 id="pn-estrategico">Premium Estratégico</h3><p class="pdesc">Para ganhar autoridade e posicionamento.</p>
   <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 2.150/mês</s> por</p><p class="now"><span class="pill">R$ 1.950</span><span class="per">/mês</span></p><p class="save">Economize R$ 200/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>14 por mês</b></li><li class="on"><span>Reuniões</span><b>1 por mês</b></li><li class="on"><span>Captação</span><b>1 sessão/mês</b></li><li class="on"><span>Tráfego pago</span><b>Gestão inclusa</b></li></ul></header>
-    <button class="plan-more" type="button" aria-expanded="false" aria-controls="plano-estrategico-details">Saiba mais <span aria-hidden="true">+</span></button>
-  <div class="plan-details" id="plano-estrategico-details" hidden><div class="inc"><p class="base">Tudo do Premium +</p><ul class="yes"><li>14 publicações por mês</li><li>1 captação presencial por mês</li><li>1 reunião estratégica por mês</li><li>Planejamento de campanhas</li><li>Análise de indicadores</li><li>Direcionamento de posicionamento</li><li>Gestão de tráfego pago</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Drone</li><li>Fotógrafo externo</li><li>Serviços fora do escopo</li></ul></div>
-  </div>
-  <a class="btn btn-accent mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Premium%20Estrat%C3%A9gico%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.950%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20entender%20os%20pr%C3%B3ximos%20passos%20para%20contratar." target="_blank" rel="noopener noreferrer" data-wa="estrategico" data-cur="CONTRATAR NO WHATSAPP •">Quero fortalecer minha marca</a>
+  <div class="inc"><p class="base">Tudo do Premium +</p><ul class="yes"><li>14 publicações por mês</li><li>1 captação presencial por mês</li><li>1 reunião estratégica por mês</li><li>Planejamento de campanhas</li><li>Análise de indicadores</li><li>Direcionamento de posicionamento</li><li>Gestão de tráfego pago</li></ul></div><div class="exc"><p class="base">Não inclui:</p><ul class="no"><li>Drone</li><li>Fotógrafo externo</li><li>Serviços fora do escopo</li></ul></div>
+ <a class="btn btn-accent mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Premium%20Estrat%C3%A9gico%20da%20RLSN%2C%20no%20valor%20de%20R%24%201.950%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20entender%20os%20pr%C3%B3ximos%20passos%20para%20contratar." target="_blank" rel="noopener noreferrer" data-wa="estrategico" data-cur="CONTRATAR NO WHATSAPP •">Quero fortalecer minha marca</a>
 </article><article class="plan rv tap" id="plano-360" aria-labelledby="pn-360">
   <header><h3 id="pn-360">Premium 360°</h3><p class="pdesc">Para mais produção e acompanhamento.</p>
   <div class="price"><p class="from">De <s><span class="sr">valor mensal sem permanência </span>R$ 3.250/mês</s> por</p><p class="now"><span class="pill">R$ 2.950</span><span class="per">/mês</span></p><p class="save">Economize R$ 300/mês com permanência de 3 meses</p></div><ul class="kf" aria-label="Resumo do plano"><li class="on"><span>Publicações</span><b>20 por mês</b></li><li class="on"><span>Reuniões</span><b>2 por mês</b></li><li class="on"><span>Captação</span><b>2 sessões/mês</b></li><li class="on"><span>Tráfego pago</span><b>Gestão inclusa</b></li></ul></header>
-    <button class="plan-more" type="button" aria-expanded="false" aria-controls="plano-360-details">Saiba mais <span aria-hidden="true">+</span></button>
-  <div class="plan-details" id="plano-360-details" hidden><div class="inc"><p class="base">Tudo do Estratégico +</p><ul class="yes"><li>20 publicações por mês</li><li>2 captações presenciais por mês</li><li>2 reuniões estratégicas por mês</li><li>Planejamento editorial ampliado</li><li>Conteúdo e campanhas integrados</li><li>Análise ampliada e plano de otimização</li><li>Pautas para serviços e vendas</li><li>Captação com drone</li><li>Serviços extras conforme escopo</li></ul></div>
-  </div>
-  <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Premium%20360%C2%B0%20da%20RLSN%2C%20no%20valor%20de%20R%24%202.950%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20conhecer%20as%20condi%C3%A7%C3%B5es%20de%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="360" data-cur="CONTRATAR NO WHATSAPP •">Quero uma gestão completa</a>
+  <div class="inc"><p class="base">Tudo do Estratégico +</p><ul class="yes"><li>20 publicações por mês</li><li>2 captações presenciais por mês</li><li>2 reuniões estratégicas por mês</li><li>Planejamento editorial ampliado</li><li>Conteúdo e campanhas integrados</li><li>Análise ampliada e plano de otimização</li><li>Pautas para serviços e vendas</li><li>Captação com drone</li><li>Serviços extras conforme escopo</li></ul></div>
+ <a class="btn btn-line mag tap" href="https://wa.me/5588999878583?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Premium%20360%C2%B0%20da%20RLSN%2C%20no%20valor%20de%20R%24%202.950%20por%20m%C3%AAs%2C%20com%20perman%C3%AAncia%20m%C3%ADnima%20de%203%20meses.%20Gostaria%20de%20conhecer%20as%20condi%C3%A7%C3%B5es%20de%20contrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" data-wa="360" data-cur="CONTRATAR NO WHATSAPP •">Quero uma gestão completa</a>
 </article></div>
     <div class="pnav" aria-label="Navegar entre planos">
       <button type="button" class="pn-b tap" data-dir="-1"><i aria-hidden="true">‹</i><span></span></button>
@@ -1745,17 +1736,6 @@ const CONFIG = {
     });
   }
 
-
-  /* ---------- abrir detalhes de cada plano ---------- */
-  $('.plan-more').forEach(btn => btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const panel = document.getElementById(btn.getAttribute('aria-controls'));
-    const open = btn.getAttribute('aria-expanded') !== 'true';
-    btn.setAttribute('aria-expanded', String(open));
-    panel.hidden = !open;
-    btn.innerHTML = open ? 'Ver menos <span aria-hidden="true">−</span>' : 'Saiba mais <span aria-hidden="true">+</span>';
-    requestAnimationFrame(() => { setTops(); req(); });
-  }));
 
   /* ---------- seletor de planos (celular e tablet) ---------- */
   const mqTabs = matchMedia('(max-width: 1279px)');
