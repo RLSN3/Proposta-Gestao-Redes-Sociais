@@ -151,16 +151,17 @@ h2.tt{font-size:clamp(36px,5.8vw,76px)}
 .no li::before{content:"";position:absolute;left:2px;top:.72em;width:11px;height:1.5px;background:var(--mut)}
 
 /* ---------- identidade visual individual dos pacotes ---------- */
-#plano-basico{--plan-color:#64748b;border-top:4px solid #64748b}
-#plano-premium{--plan-color:#0f766e;border-top:4px solid #0f766e}
-#plano-estrategico{--plan-color:#2563eb;border-top:4px solid #2563eb}
-#plano-360{--plan-color:#7c3aed;border-top:4px solid #7c3aed}
+#plano-basico{--plan-color:#007BFF;border-top:4px solid #007BFF}
+#plano-premium{--plan-color:#30D5C8;border-top:4px solid #30D5C8}
+#plano-estrategico{--plan-color:#FF5733;border-top:4px solid #FF5733}
+#plano-360{--plan-color:#121212;border-top:4px solid #121212}
 .plans .plan h3{color:var(--plan-color)}
 .plans .plan .price .pill{background:var(--plan-color);color:#fff}
 .plans .plan .btn-line{background:var(--plan-color);border-color:var(--plan-color);color:#fff}
-.plans .plan.rec{--plan-color:#7aa5ff}
+#plano-premium .price .pill,#plano-premium .btn-line{color:#121212}
+.plans .plan.rec{--plan-color:#FF5733}
 .plans .plan.rec h3{color:var(--plan-color)}
-.plans .plan.rec .price .pill{background:var(--plan-color);color:#101828}
+.plans .plan.rec .price .pill{background:var(--plan-color);color:#121212}
 
 .plan .inc{flex:1}
 .plan .exc{border-top:1px solid var(--line);padding-top:18px}
