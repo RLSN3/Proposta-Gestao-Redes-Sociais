@@ -953,6 +953,71 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
 @media (max-width:860px) and (min-width:720px){.pils{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media (max-width:430px){.ttab{padding:6px 2px}.ttab b{font-size:13px!important;letter-spacing:-.01em}}
 @media (max-width:359px){.js .ttabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}.ttab b{font-size:14px!important}}
+
+/* ---------- organização visual dos planos ---------- */
+@media (min-width:1280px){
+  .plans{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:22px!important;
+    align-items:stretch;
+  }
+  .plans .plan{
+    min-width:0;
+    padding:30px!important;
+    gap:24px!important;
+  }
+  .plans .plan header{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+  }
+  .plans .plan .kf{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+    margin-top:20px!important;
+  }
+  .plans .plan .kf li{
+    min-width:0;
+    min-height:64px;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:center!important;
+    gap:5px!important;
+    padding:12px 14px!important;
+  }
+  .plans .plan .kf b{
+    text-align:left;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .plans .plan .price{
+    margin-top:20px;
+    padding-top:20px;
+  }
+  .plans .plan .inc,
+  .plans .plan .exc{
+    min-width:0;
+  }
+  .plans .plan .inc ul,
+  .plans .plan .exc ul{
+    gap:10px;
+  }
+  .plans .plan .btn{margin-top:auto}
+}
+@media (min-width:760px) and (max-width:1279px){
+  .js .plans{max-width:700px}
+  .js .plans .plan{padding:30px!important;gap:24px!important}
+}
+@media (max-width:759px){
+  .js .plans .plan{gap:20px!important}
+  .js .plans .plan .price{margin-top:18px;padding-top:16px}
+  .js .plans .plan .kf{gap:8px!important}
+  .js .plans .plan .kf li{min-width:0;padding:10px!important}
+  .js .plans .plan .kf b{overflow-wrap:anywhere}
+  .js .plans .plan .inc ul,
+  .js .plans .plan .exc ul{gap:9px}
+}
+
 </style>
 </head>
 <body>
