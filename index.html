@@ -1018,6 +1018,41 @@ tr.grp th{background:transparent;padding:22px 18px 8px;font-size:var(--t-lab)!im
   .js .plans .plan .exc ul{gap:9px}
 }
 
+
+/* ---------- cores da paleta no plano selecionado ---------- */
+@media (max-width:1279px){
+  .ptab[aria-selected="true"]{
+    background:var(--blue)!important;
+    color:#101010!important;
+    box-shadow:inset 0 0 0 1px var(--blue);
+  }
+  .ptab[aria-selected="true"] span{
+    color:#101010!important;
+    opacity:.82;
+  }
+  .ptab[aria-selected="true"] b::after{
+    color:#101010!important;
+  }
+  .js .plans .plan.is-on{
+    border:1.5px solid var(--teal);
+    box-shadow:0 0 0 3px rgba(64,224,208,.12),0 24px 55px rgba(0,0,0,.22);
+  }
+  .js .plans .plan.is-on .price{
+    border-top-color:rgba(64,224,208,.45);
+  }
+  .js .plans .plan.is-on .now .pill{
+    background:var(--blue);
+    color:#101010;
+  }
+  .js .plans .plan.is-on .save,
+  .js .plans .plan.is-on .yes li::before{
+    color:var(--teal);
+  }
+}
+@media (max-width:520px){
+  .ptab[aria-selected="true"]{border-radius:13px}
+}
+
 </style>
 </head>
 <body>
